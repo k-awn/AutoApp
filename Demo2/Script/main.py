@@ -30,5 +30,5 @@ if __name__ == "__main__":
             print('skibidi')     
         self.printButton.clicked.connect(on_button_clicked)
 '''
-
+print('helo')
 #last line isnt working wtfskibdiskibdidopskibdi]]skibdidopopdop
