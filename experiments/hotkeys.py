@@ -7,6 +7,7 @@ from time import sleep as wait
 def response():
     pyautogui.typewrite('chairs', interval=0.01)
     wait(1)
+    pyautogui.click(500,500)
 keyboard.add_hotkey(']', response, suppress=True, trigger_on_release=True) 
 
-keyboard.wait('esc')    
+keyboard.wait('esc')

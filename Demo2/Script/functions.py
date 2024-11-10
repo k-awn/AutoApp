@@ -39,11 +39,11 @@ class SeleniumWorker:
             wait(1)
 
 def runSeleniumWorker():
-    print("Seleniumworker Creating and starting thread")
+    print("Seleniumworker - creating and starting thread")
     worker = SeleniumWorker()
     thread = threading.Thread(target=worker.run)
     thread.start()
-    print("Seleniumworker started in background")
+    print("Seleniumworker - started in background")
 #! ButtonHotkey
 
 class TypeWorker:
@@ -57,8 +57,26 @@ class TypeWorker:
         quit()
         
 def runTypeWorker(content, hotkey):
-    print("Typeworker Creating and starting thread")
+    print("Typeworker - creating and starting thread")
     worker = TypeWorker()
     thread = threading.Thread(target=worker.run, args=(content, hotkey))
     thread.start()
-    print("Typeworker started in background")
+    print("Typeworker - started in background")
+
+class ClickWorker:
+    def run(self, x, y, hotkey):
+        def response():
+            pyautogui.click(int(x), int(y))
+            wait(1)
+        hotkey = keyboard.add_hotkey(hotkey, callback=response, suppress=True, trigger_on_release=True)
+        keyboard.wait('esc')
+        keyboard.remove_hotkey(hotkey)
+        quit()
+
+
+def runClickWorker(x,y,hotkey):
+    print("ClickWorker - creating and starting thread")
+    worker = ClickWorker()
+    thread = threading.Thread(target=worker.run, args=(x, y, hotkey))
+    thread.start()
+    print('ClickWorker - started in background')

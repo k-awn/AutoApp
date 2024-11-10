@@ -25,10 +25,7 @@ from PySide6.QtWidgets import (QFormLayout, QFrame, QGridLayout, QCheckBox, QTex
     QSpacerItem, QStackedWidget, QWidget)
 from Icons_rc import qt_resource_data
 from toggle import CustomToggle
-from PySide6.QtCore import QProcess, QThread
-from functions import SeleniumWorker, runSeleniumWorker, TypeWorker, runTypeWorker
-from time import sleep as wait
-from functools import partial
+from functions import SeleniumWorker, runSeleniumWorker, TypeWorker, runTypeWorker, ClickWorker, runClickWorker
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -517,8 +514,13 @@ class Ui_MainWindow(object):
             hotkey=self.textEdit_2.toPlainText()
             content=self.TextInput.toPlainText()
             runTypeWorker(hotkey=hotkey, content=content)
-        
+        def ClickWorkerEvent():
+            xcoord=self.xcoord.toPlainText()
+            ycoord=self.ycoord.toPlainText()
+            hotkey=self.HotkeyInput.toPlainText()
+            runClickWorker(x=xcoord, y=ycoord, hotkey=hotkey)
         self.buttonHTML.clicked.connect(HTMLClickEvent)
+        self.XYButton.clicked.connect(ClickWorkerEvent)
         self.TextInput.setText('skibdi')
         self.textEdit_2.setText(']')
         self.hotkeyClick.clicked.connect(TypeWorkerEvent)
