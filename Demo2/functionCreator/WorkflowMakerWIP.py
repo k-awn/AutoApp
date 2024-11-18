@@ -303,7 +303,7 @@ class Ui_MainWindow(object):
         self.LabelLayout.setObjectName(u"LabelLayout")
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.LabelLayout.addItem(self.verticalSpacer_3, 99999, 0, 1, 1)
+        self.LabelLayout.addItem(self.verticalSpacer_3, 0, 0, 1, 1)
 
 
         self.verticalLayout.addLayout(self.LabelLayout)
@@ -325,103 +325,12 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.trigSettings.setCurrentIndex(0)
         self.funcSettings.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
-        def syncFunc():
-            dropIndex = self.functionDropDown.currentIndex()
-            self.funcSettings.setCurrentIndex(dropIndex)
-        self.functionDropDown.currentIndexChanged.connect(syncFunc)
-        def syncTrig():
-            dropIndex = self.triggerDropDown.currentIndex()
-            self.trigSettings.setCurrentIndex(dropIndex)
-        self.functionDropDown.currentIndexChanged.connect(syncFunc)
-        self.triggerDropDown.currentIndexChanged.connect(syncTrig)
-        def AddTrigger():
-            trigIndex = str(self.triggerDropDown.currentIndex())
-            indexKey = {
-                0 : 'Hotkey',
-                1 : 'Set Interval'
-            }
-            if trigIndex == '0':
-                hotkey = self.textEdit.toPlainText()
-                if len(hotkey) == 0:
-                    return
-                additionalContent = ('hotkey=' + hotkey)
-            elif trigIndex == '1':
-                interval = self.textEdit_2.toPlainText()
-                if len(interval) == 0:
-                    return
-                additionalContent = ('interval=' + interval)
-            trigName = indexKey.get(int(trigIndex))
-            count = self.LabelLayout.count() - 1
-            self.label = QLabel(trigName + ' ' + additionalContent)
-            self.label.setObjectName(u"step" + str(count))
-            self.LabelLayout.addWidget(self.label, count, 0, 1, 1)
-        def AddFunction():
-            funcIndex = str(self.functionDropDown.currentIndex())
-            #! FuncIndex = 0
-            indexKey = {
-                0 : 'Open Browser',
-                1 : 'Click Button',
-                2 : 'Click On Screen',
-                3 : 'Typewrite',
-                4 : 'Wait' 
-            }
-            if funcIndex == '0':
-                url = self.textEdit_3.toPlainText()
-                if len(url) == 0:
-                    return
-                additionalContent = ('url=' + url)
-            if funcIndex == '1':
-                xPath = self.xPathInput.toPlainText()
-                if len(xPath) == 0:
-                    return
-                additionalContent = ('xPath=' + xPath)
-            if funcIndex == '2':
-                xCoord = self.xCoordInputClick.toPlainText()
-                yCoord = self.yCoordInputClick.toPlainText()
-                if len(xCoord) == 0 or len(yCoord) == 0:
-                    return
-                additionalContent = ('xCoord=' + xCoord + ' yCoord=' + yCoord)
-            if funcIndex == '3':
-                content = self.contentInput.toPlainText()
-                if len(content) == 0:
-                    return
-                additionalContent = ('content=' + content)
-            if funcIndex == '4':
-                duration = self.textEdit_4.toPlainText()
-                if len(duration) == 0:
-                    return
-                additionalContent = ('duration=' + duration)
-            
-            funcName = indexKey.get(int(funcIndex))
-            self.label = QLabel(funcName + ' ' + additionalContent)
-            count = self.LabelLayout.count() - 1
-            self.LabelLayout.addWidget(self.label, count,0,1,1)
-        def Check():
-            if self.LabelLayout.count() - 1 == 0:
-                print('trigger not added')
-                self.stackedWidget.setCurrentIndex(0)
-                return
-            elif self.LabelLayout.count() - 1 >= 1:
-                print('trigger added')
-                self.stackedWidget.setCurrentIndex(1)
-                return
-        def compile():
-            # Get all labels from LabelLayout
-            for i in range(self.LabelLayout.count()):
-                widget = self.LabelLayout.itemAt(i).widget()
-                if isinstance(widget, QLabel):
-                    print(widget.text())
-        self.pushButton_3.clicked.connect(compile)
-        self.pushButton_2.clicked.connect(AddFunction)
-        self.pushButton.clicked.connect(AddTrigger)
-        self.pushButton.clicked.connect(Check)
-        self.pushButton_2.clicked.connect(Check)
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -462,3 +371,4 @@ class Ui_MainWindow(object):
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:700;\">Workflow Creator</span></p></body></html>", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"This is the part where I say where your code has been saved", None))
     # retranslateUi
+
