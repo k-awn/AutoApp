@@ -433,9 +433,11 @@ class Ui_MainWindow(object):
                     prevText = prevVersion.read()
                     writeText.write(prevText + '\n\t')
                     if orderedMethod[realnum]['type'] == 'Open Browser':
-                        writeText.write('print("open browser")')
+                        #? The below code is barely readable due to the amount of lines required. \n\t means new line, new tab.
+                        writeText.write('options2 = uc.ChromeOptions()\n\tprefs = {"credentials_enable_service": False, "profile.password_manager_enabled": False}\n\toptions2.add_experimental_option("prefs",prefs)\n\tdriver = uc.Chrome(options=options2, driver_executable_path="Demo2/functionCreator/chromedriver.exe")\n\tdriver.maximize_window()\n\t') #TODO: Make driver.maximize_window optional (might not do this), also these are the settings
+                        writeText.write(f'driver.get("{orderedMethod[realnum]['url']}")') #! this is the line that opens the browser at the specified url
                     elif orderedMethod[realnum]['type'] == 'Click Button':
-                        writeText.write('print("click button")')
+                        writeText.write(f'driver.find_element(By.XPATH, "{orderedMethod[realnum]['xpath']}").click()') #TODO: Try to make a tutorial especially for this 
                     elif orderedMethod[realnum]['type'] == 'Click on Screen':
                         writeText.write(f'click(x={str(orderedMethod[realnum]['xcoord'])}, y={str(orderedMethod[realnum]['ycoord'])})')
                     elif orderedMethod[realnum]['type'] == 'Typewrite':
