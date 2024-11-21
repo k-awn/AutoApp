@@ -19,8 +19,9 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QLabel,
     QMainWindow, QPushButton, QScrollArea, QSizePolicy,
     QSpacerItem, QStackedWidget, QTextEdit, QVBoxLayout,
     QWidget)
+from os.path import isfile
 
-class Ui_MainWindow(object):
+class Ui_MainWindow2(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -420,8 +421,19 @@ class Ui_MainWindow(object):
                 return
         def Compile():
             #! All the code in this function is in plaintext written into a python file, you may have difficulties understanding what's written here
+            #? check if 
+            for i in range(5):
+                num = i+1
+                FileExists = isfile(f'Demo2\workflows\workflow{num}.py')
+                if num==5 and FileExists:
+                    Status = 'all workflows exist'
+                if not FileExists:
+                    Status = f'opened workflow on filepath Demo2/workflows/workflow{num}'
+                    filepath = f'Demo2\workflows\workflow{num}.py'
+                    open(filepath, 'x')
+                
             values = len(orderedMethod)
-            writeText = open(r'Demo2\functionCreator\function.py', 'w')
+            writeText = open(filepath, 'w')
             writeText.write('#New start')
             writeText.write('\n' + 'import keyboard' + '\n' + 'from selenium.webdriver.common.by import By' + '\n' + 'from selenium.webdriver.support import expected_conditions as EC' + '\n' + 'import undetected_chromedriver as uc' + '\n' + 'from time import sleep as wait' + '\n' + 'from pyautogui import typewrite, click' + '\n') #? All the imports are here!
             writeText.write('\n\n' + 'def response():' + '\n\t' + 'print("hotkey pressed")')

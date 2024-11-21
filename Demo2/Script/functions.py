@@ -79,3 +79,35 @@ def runClickWorker(x,y,hotkey):
     thread = threading.Thread(target=worker.run, args=(x, y, hotkey))
     thread.start()
     print('ClickWorker - started in background')
+
+class FileChecker():
+    def run(self):
+        Workflow1Exists = isfile('Demo2\workflows\workflow1.py')
+        Workflow22Exists = isfile('Demo2\workflows\workflow2.py')
+        Workflow3Exists = isfile('Demo2\workflows\workflow3.py')
+        Workflow4Exists = isfile('Demo2\workflows\workflow4.py')
+        Workflow5Exists = isfile('Demo2\workflows\workflow5.py')
+        if Workflow1Exists is True:
+            self.Workflow1.isVisible(True)
+        else:
+            self.Workflow1.isVisible(False)
+        if Workflow22Exists is True:
+            self.Workflow2.isVisible(True)
+        else:
+            self.Workflow2.isVisible(False)
+        if self.Workflow3Exists is True:
+            self.Workflow3.isVisible(True)
+        else:
+            self.Workflow3.isVisible(False)
+        if Workflow3Exists is True:
+            self.Workflow3.isVisible(True)
+        else:
+            self.Workflow3.isVisible(False)
+        if Workflow4Exists is True:
+            self.Workflow4.isVisible(True)
+        else:
+            self.Workflow4.isVisible(False)
+        if Workflow5Exists is True:
+            self.Workflow5.isVisible(True)
+        else:
+            self.Workflow5.isVisible(False)

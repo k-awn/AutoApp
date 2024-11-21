@@ -1,8 +1,8 @@
 import sys 
 from PySide6.QtGui import QIcon
 from PySide6 import QtWidgets
-from WorkflowMakerprev2 import Ui_MainWindow
-class MainWindow(QtWidgets.QWidget, Ui_MainWindow):
+from WorkflowMakerprev2 import Ui_MainWindow2
+class MainWindow(QtWidgets.QWidget, Ui_MainWindow2):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent=parent)
         self.setupUi(self)
@@ -14,7 +14,7 @@ if __name__ == "__main__":
     logo.addFile(r'assets\images\AppLogo.ico')
     logo.addFile(r'assets\images\AppLogo.png')
     app.setWindowIcon(logo)
-    ex = Ui_MainWindow()
+    ex = Ui_MainWindow2()
     w = QtWidgets.QMainWindow()
     ex.setupUi(w)
     w.showMaximized()

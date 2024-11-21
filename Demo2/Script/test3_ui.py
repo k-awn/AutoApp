@@ -1,37 +1,384 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'test3.ui'
+## Form generated from reading UI file 'test3VGoflT.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.0
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'test3.ui'
-##
-## Created by: Qt User Interface Compiler version 6.8.0
+## Created by: Qt User Interface Compiler version 6.7.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, Qt)
+
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, Qt, QRect)
 from PySide6.QtGui import (QIcon, QFont)
 from PySide6.QtWidgets import (QFormLayout, QFrame, QGridLayout, QCheckBox, QTextEdit, QHBoxLayout,
     QLabel, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QWidget)
-from Icons_rc import qt_resource_data
+    QSpacerItem, QStackedWidget, QWidget, QScrollArea)
+import Icons_rc
 from toggle import CustomToggle
-from functions import SeleniumWorker, runSeleniumWorker, TypeWorker, runTypeWorker, ClickWorker, runClickWorker
+from os.path import isfile
+from os import remove
+import threading
+import time
+
+from WorkflowMakerprev2 import Ui_MainWindow2
+class Ui_Form(QWidget):
+    def setupUi(self):
+        if not self.objectName():
+            self.setObjectName(u"Form")
+        self.resize(500, 500)
+
+        self.setMinimumSize(QSize(500, 500))
+        self.gridLayout = QGridLayout(self)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.label_3 = QLabel(self)
+        self.label_3.setObjectName(u"label_3")
+
+        self.gridLayout.addWidget(self.label_3, 0, 0, 1, 2)
+
+        self.stackedWidget = QStackedWidget(self)
+        self.stackedWidget.setObjectName(u"stackedWidget")
+        self.stackedWidget.setMaximumSize(QSize(16777215, 150))
+        self.page_2 = QWidget()
+        self.page_2.setObjectName(u"page_2")
+        self.gridLayout_3 = QGridLayout(self.page_2)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.label = QLabel(self.page_2)
+        self.label.setObjectName(u"label")
+
+        self.gridLayout_3.addWidget(self.label, 1, 0, 1, 1)
+
+        self.pushButton = QPushButton(self.page_2)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.gridLayout_3.addWidget(self.pushButton, 3, 0, 1, 2)
+
+        self.triggerDropDown = QComboBox(self.page_2)
+        self.triggerDropDown.addItem("")
+        self.triggerDropDown.addItem("")
+        self.triggerDropDown.setObjectName(u"triggerDropDown")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.triggerDropDown.sizePolicy().hasHeightForWidth())
+        self.triggerDropDown.setSizePolicy(sizePolicy)
+
+        self.gridLayout_3.addWidget(self.triggerDropDown, 1, 1, 1, 1)
+
+        self.trigSettings = QStackedWidget(self.page_2)
+        self.trigSettings.setObjectName(u"trigSettings")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.trigSettings.sizePolicy().hasHeightForWidth())
+        self.trigSettings.setSizePolicy(sizePolicy1)
+        self.trigSettings.setMinimumSize(QSize(200, 50))
+        self.trigSettings.setMaximumSize(QSize(16777215, 50))
+        self.hotkeySettings = QWidget()
+        self.hotkeySettings.setObjectName(u"hotkeySettings")
+        self.hotkeySettings.setMaximumSize(QSize(16777215, 50))
+        self.gridLayout_2 = QGridLayout(self.hotkeySettings)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(-1, 9, -1, -1)
+        self.textEdit = QTextEdit(self.hotkeySettings)
+        self.textEdit.setObjectName(u"textEdit")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
+        self.textEdit.setSizePolicy(sizePolicy2)
+        self.textEdit.setMinimumSize(QSize(0, 0))
+        self.textEdit.setMaximumSize(QSize(16777215, 25))
+        self.textEdit.setStyleSheet(u"border:none; background:transparent")
+
+        self.gridLayout_2.addWidget(self.textEdit, 0, 1, 1, 1)
+
+        self.label_5 = QLabel(self.hotkeySettings)
+        self.label_5.setObjectName(u"label_5")
+
+        self.gridLayout_2.addWidget(self.label_5, 0, 0, 1, 1)
+
+        self.trigSettings.addWidget(self.hotkeySettings)
+        self.intervalSettings = QWidget()
+        self.intervalSettings.setObjectName(u"intervalSettings")
+        self.gridLayout_4 = QGridLayout(self.intervalSettings)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.label_6 = QLabel(self.intervalSettings)
+        self.label_6.setObjectName(u"label_6")
+
+        self.gridLayout_4.addWidget(self.label_6, 0, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
+
+        self.textEdit_2 = QTextEdit(self.intervalSettings)
+        self.textEdit_2.setObjectName(u"textEdit_2")
+        self.textEdit_2.setMaximumSize(QSize(16777215, 25))
+        self.textEdit_2.setStyleSheet(u"border:none; background:transparent")
+
+        self.gridLayout_4.addWidget(self.textEdit_2, 0, 1, 1, 1, Qt.AlignmentFlag.AlignTop)
+
+        self.trigSettings.addWidget(self.intervalSettings)
+
+        self.gridLayout_3.addWidget(self.trigSettings, 4, 0, 1, 2)
+
+        self.label_9 = QLabel(self.page_2)
+        self.label_9.setObjectName(u"label_9")
+
+        self.gridLayout_3.addWidget(self.label_9, 0, 0, 1, 2)
+
+        self.stackedWidget.addWidget(self.page_2)
+        self.page_3 = QWidget()
+        self.page_3.setObjectName(u"page_3")
+        self.gridLayout_10 = QGridLayout(self.page_3)
+        self.gridLayout_10.setObjectName(u"gridLayout_10")
+        self.functionDropDown = QComboBox(self.page_3)
+        self.functionDropDown.addItem("")
+        self.functionDropDown.addItem("")
+        self.functionDropDown.addItem("")
+        self.functionDropDown.addItem("")
+        self.functionDropDown.addItem("")
+        self.functionDropDown.setObjectName(u"functionDropDown")
+        sizePolicy.setHeightForWidth(self.functionDropDown.sizePolicy().hasHeightForWidth())
+        self.functionDropDown.setSizePolicy(sizePolicy)
+
+        self.gridLayout_10.addWidget(self.functionDropDown, 1, 1, 1, 1, Qt.AlignmentFlag.AlignVCenter)
+
+        self.funcSettings = QStackedWidget(self.page_3)
+        self.funcSettings.setObjectName(u"funcSettings")
+        self.funcSettings.setMaximumSize(QSize(16777215, 50))
+        self.openBrowserSettings = QWidget()
+        self.openBrowserSettings.setObjectName(u"openBrowserSettings")
+        self.gridLayout_5 = QGridLayout(self.openBrowserSettings)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.label_7 = QLabel(self.openBrowserSettings)
+        self.label_7.setObjectName(u"label_7")
+
+        self.gridLayout_5.addWidget(self.label_7, 0, 0, 1, 1, Qt.AlignmentFlag.AlignVCenter)
+
+        self.textEdit_3 = QTextEdit(self.openBrowserSettings)
+        self.textEdit_3.setObjectName(u"textEdit_3")
+        self.textEdit_3.setMaximumSize(QSize(16777215, 25))
+        self.textEdit_3.setStyleSheet(u"border:none; background:transparent")
+
+        self.gridLayout_5.addWidget(self.textEdit_3, 0, 1, 1, 1)
+
+        self.funcSettings.addWidget(self.openBrowserSettings)
+        self.clickButton = QWidget()
+        self.clickButton.setObjectName(u"clickButton")
+        self.gridLayout_6 = QGridLayout(self.clickButton)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_6.addItem(self.verticalSpacer_4, 2, 0, 1, 1)
+
+        self.xPathLabel = QLabel(self.clickButton)
+        self.xPathLabel.setObjectName(u"xPathLabel")
+
+        self.gridLayout_6.addWidget(self.xPathLabel, 0, 0, 1, 1)
+
+        self.xPathInput = QTextEdit(self.clickButton)
+        self.xPathInput.setObjectName(u"xPathInput")
+        self.xPathInput.setMaximumSize(QSize(16777215, 25))
+        self.xPathInput.setStyleSheet(u"border:none; background:transparent")
+
+        self.gridLayout_6.addWidget(self.xPathInput, 0, 1, 1, 1, Qt.AlignmentFlag.AlignTop)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_6.addItem(self.verticalSpacer_5, 2, 1, 1, 1)
+
+        self.funcSettings.addWidget(self.clickButton)
+        self.clickScreenSettings = QWidget()
+        self.clickScreenSettings.setObjectName(u"clickScreenSettings")
+        self.gridLayout_7 = QGridLayout(self.clickScreenSettings)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.yCoordLabel = QLabel(self.clickScreenSettings)
+        self.yCoordLabel.setObjectName(u"yCoordLabel")
+
+        self.gridLayout_7.addWidget(self.yCoordLabel, 1, 0, 1, 1)
+
+        self.xCoordLabel = QLabel(self.clickScreenSettings)
+        self.xCoordLabel.setObjectName(u"xCoordLabel")
+
+        self.gridLayout_7.addWidget(self.xCoordLabel, 0, 0, 1, 1)
+
+        self.yCoordInputClick = QTextEdit(self.clickScreenSettings)
+        self.yCoordInputClick.setObjectName(u"yCoordInputClick")
+        self.yCoordInputClick.setMaximumSize(QSize(16777215, 25))
+        self.yCoordInputClick.setStyleSheet(u"background:transparent; border:none;")
+
+        self.gridLayout_7.addWidget(self.yCoordInputClick, 1, 1, 1, 1)
+
+        self.xCoordInputClick = QTextEdit(self.clickScreenSettings)
+        self.xCoordInputClick.setObjectName(u"xCoordInputClick")
+        self.xCoordInputClick.setMaximumSize(QSize(16777215, 25))
+        self.xCoordInputClick.setStyleSheet(u"background:transparent; border:none;")
+
+        self.gridLayout_7.addWidget(self.xCoordInputClick, 0, 1, 1, 1)
+
+        self.funcSettings.addWidget(self.clickScreenSettings)
+        self.typewriteSettings = QWidget()
+        self.typewriteSettings.setObjectName(u"typewriteSettings")
+        self.gridLayout_8 = QGridLayout(self.typewriteSettings)
+        self.gridLayout_8.setObjectName(u"gridLayout_8")
+        self.contentInput = QTextEdit(self.typewriteSettings)
+        self.contentInput.setObjectName(u"contentInput")
+        self.contentInput.setMaximumSize(QSize(16777215, 25))
+        self.contentInput.setStyleSheet(u"border:none; background:transparent;")
+
+        self.gridLayout_8.addWidget(self.contentInput, 0, 1, 1, 1)
+
+        self.contentLabel = QLabel(self.typewriteSettings)
+        self.contentLabel.setObjectName(u"contentLabel")
+
+        self.gridLayout_8.addWidget(self.contentLabel, 0, 0, 1, 1)
+
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_8.addItem(self.verticalSpacer_6, 1, 0, 1, 1)
+
+        self.funcSettings.addWidget(self.typewriteSettings)
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.gridLayout_9 = QGridLayout(self.page)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.textEdit_4 = QTextEdit(self.page)
+        self.textEdit_4.setObjectName(u"textEdit_4")
+        self.textEdit_4.setMaximumSize(QSize(16777215, 25))
+        self.textEdit_4.setStyleSheet(u"background:transparent; border:none;")
+
+        self.gridLayout_9.addWidget(self.textEdit_4, 0, 1, 1, 1)
+
+        self.label_8 = QLabel(self.page)
+        self.label_8.setObjectName(u"label_8")
+
+        self.gridLayout_9.addWidget(self.label_8, 0, 0, 1, 1)
+
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_7, 1, 0, 1, 1)
+
+        self.funcSettings.addWidget(self.page)
+
+        self.gridLayout_10.addWidget(self.funcSettings, 3, 0, 1, 2)
+
+        self.pushButton_2 = QPushButton(self.page_3)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+
+        self.gridLayout_10.addWidget(self.pushButton_2, 2, 0, 1, 2, Qt.AlignmentFlag.AlignTop)
+
+        self.label_4 = QLabel(self.page_3)
+        self.label_4.setObjectName(u"label_4")
+
+        self.gridLayout_10.addWidget(self.label_4, 1, 0, 1, 1)
+
+        self.label_10 = QLabel(self.page_3)
+        self.label_10.setObjectName(u"label_10")
+
+        self.gridLayout_10.addWidget(self.label_10, 0, 0, 1, 2)
+
+        self.stackedWidget.addWidget(self.page_3)
+
+        self.gridLayout.addWidget(self.stackedWidget, 1, 0, 1, 2)
+
+        self.label_2 = QLabel(self)
+        self.label_2.setObjectName(u"label_2")
+
+        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 2)
+
+        self.scrollArea = QScrollArea(self)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 480, 94))
+        self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.LabelLayout = QGridLayout()
+        self.LabelLayout.setObjectName(u"LabelLayout")
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.LabelLayout.addItem(self.verticalSpacer_3, 0, 0, 1, 1)
+
+
+        self.verticalLayout.addLayout(self.LabelLayout)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.gridLayout.addWidget(self.scrollArea, 3, 0, 1, 2)
+
+        self.pushButton_3 = QPushButton(self)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+
+        self.gridLayout.addWidget(self.pushButton_3, 4, 0, 1, 2)
+
+        self.label_11 = QLabel(self)
+        self.label_11.setObjectName(u"label_11")
+
+        self.gridLayout.addWidget(self.label_11, 5, 0, 1, 2)
+
+        self.verticalSpacer = QSpacerItem(20, 93, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 6, 0, 1, 1)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 93, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer_2, 6, 1, 1, 1)
+
+
+        self.retranslateUi(self)
+
+        self.stackedWidget.setCurrentIndex(1)
+        self.trigSettings.setCurrentIndex(0)
+        self.funcSettings.setCurrentIndex(0)
+
+
+        QMetaObject.connectSlotsByName(self)
+    # setupUi
+
+    def retranslateUi(self):
+        self.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        self.label_3.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:700;\">Workflow Creator</span></p></body></html>", None))
+        self.label.setText(QCoreApplication.translate("Form", u"Trigger Selected:", None))
+        self.pushButton.setText(QCoreApplication.translate("Form", u"Add Trigger", None))
+        self.triggerDropDown.setItemText(0, QCoreApplication.translate("Form", u"Hotkey", None))
+        self.triggerDropDown.setItemText(1, QCoreApplication.translate("Form", u"Set interval", None))
+
+        self.textEdit.setPlaceholderText(QCoreApplication.translate("Form", u"Type your hotkey here", None))
+        self.label_5.setText(QCoreApplication.translate("Form", u"Hotkey", None))
+        self.label_6.setText(QCoreApplication.translate("Form", u"Interval:", None))
+        self.textEdit_2.setPlaceholderText(QCoreApplication.translate("Form", u"Write your interval here", None))
+        self.label_9.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Create Trigger</span></p></body></html>", None))
+        self.functionDropDown.setItemText(0, QCoreApplication.translate("Form", u"Open Browser ", None))
+        self.functionDropDown.setItemText(1, QCoreApplication.translate("Form", u"Click Button(Browser)", None))
+        self.functionDropDown.setItemText(2, QCoreApplication.translate("Form", u"Click On Screen", None))
+        self.functionDropDown.setItemText(3, QCoreApplication.translate("Form", u"Typewrite", None))
+        self.functionDropDown.setItemText(4, QCoreApplication.translate("Form", u"Wait", None))
+
+        self.label_7.setText(QCoreApplication.translate("Form", u"Browser URL", None))
+        self.textEdit_3.setPlaceholderText(QCoreApplication.translate("Form", u"Type your browser URL here", None))
+        self.xPathLabel.setText(QCoreApplication.translate("Form", u"XPath:", None))
+        self.xPathInput.setPlaceholderText(QCoreApplication.translate("Form", u"Type the XPath to the button here (Find in inspect element)", None))
+        self.yCoordLabel.setText(QCoreApplication.translate("Form", u"Y-Coordinate", None))
+        self.xCoordLabel.setText(QCoreApplication.translate("Form", u"X-Coordinate", None))
+        self.yCoordInputClick.setPlaceholderText(QCoreApplication.translate("Form", u"Type your Y-Coordinate here", None))
+        self.xCoordInputClick.setPlaceholderText(QCoreApplication.translate("Form", u"Type your X-Coordinate here", None))
+        self.contentInput.setPlaceholderText(QCoreApplication.translate("Form", u"Type your content here", None))
+        self.contentLabel.setText(QCoreApplication.translate("Form", u"Content", None))
+        self.textEdit_4.setPlaceholderText(QCoreApplication.translate("Form", u"Type your wait duration here", None))
+        self.label_8.setText(QCoreApplication.translate("Form", u"Wait Duration", None))
+        self.pushButton_2.setText(QCoreApplication.translate("Form", u"Add Function", None))
+        self.label_4.setText(QCoreApplication.translate("Form", u"Function Selected:", None))
+        self.label_10.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Create Function</span></p></body></html>", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:700;\">Item List</span></p></body></html>", None))
+        self.pushButton_3.setText(QCoreApplication.translate("Form", u"Compile Code", None))
+        self.label_11.setText(QCoreApplication.translate("Form", u"This is the part where I say where your code has been saved", None))
+    # retranslateUi
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(633, 600)
+        MainWindow.resize(731, 558)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -138,6 +485,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.Pages.sizePolicy().hasHeightForWidth())
         self.Pages.setSizePolicy(sizePolicy3)
+        self.Pages.setMinimumSize(QSize(600, 0))
         self.Pages.setFrameShape(QFrame.Shape.StyledPanel)
         self.Pages.setFrameShadow(QFrame.Shadow.Raised)
         self.gridLayout_4 = QGridLayout(self.Pages)
@@ -145,7 +493,7 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
         self.stackedWidget = QStackedWidget(self.Pages)
         self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setMinimumSize(QSize(500, 0))
+        self.stackedWidget.setMinimumSize(QSize(500, 500))
         self.stackedWidget.setAcceptDrops(False)
         self.stackedWidget.setAutoFillBackground(False)
         self.stackedWidget.setStyleSheet(u"")
@@ -175,182 +523,241 @@ class Ui_MainWindow(object):
         self.Workflows.setObjectName(u"Workflows")
         self.gridLayout_8 = QGridLayout(self.Workflows)
         self.gridLayout_8.setObjectName(u"gridLayout_8")
-        self.label_6 = QLabel(self.Workflows)
-        self.label_6.setObjectName(u"label_6")
+        self.scrollArea = QScrollArea(self.Workflows)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 566, 417))
+        self.gridLayout_6 = QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.Workflow1 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow1.setObjectName(u"Workflow1")
+        self.Workflow1.setMinimumSize(QSize(0, 75))
+        self.Workflow1.setMaximumSize(QSize(16777215, 75))
+        self.Workflow1.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow1.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow1.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_14 = QGridLayout(self.Workflow1)
+        self.gridLayout_14.setObjectName(u"gridLayout_14")
+        self.StartWorkflow1 = QPushButton(self.Workflow1)
+        self.StartWorkflow1.setObjectName(u"StartWorkflow1")
+        self.StartWorkflow1.setMinimumSize(QSize(50, 50))
+        self.StartWorkflow1.setMaximumSize(QSize(50, 50))
+        icon4 = QIcon()
+        icon4.addFile(u":/Icons/start_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.StartWorkflow1.setIcon(icon4)
+        self.StartWorkflow1.setIconSize(QSize(50, 50))
+        self.StartWorkflow1.setFlat(True)
 
-        self.gridLayout_8.addWidget(self.label_6, 4, 1, 1, 1)
+        self.gridLayout_14.addWidget(self.StartWorkflow1, 0, 2, 1, 1)
+
+        self.DeleteWorkflow1 = QPushButton(self.Workflow1)
+        self.DeleteWorkflow1.setObjectName(u"DeleteWorkflow1")
+        self.DeleteWorkflow1.setMinimumSize(QSize(50, 50))
+        self.DeleteWorkflow1.setMaximumSize(QSize(50, 50))
+        icon5 = QIcon()
+        icon5.addFile(u":/Icons/delete_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.DeleteWorkflow1.setIcon(icon5)
+        self.DeleteWorkflow1.setIconSize(QSize(50, 50))
+        self.DeleteWorkflow1.setFlat(True)
+
+        self.gridLayout_14.addWidget(self.DeleteWorkflow1, 0, 3, 1, 1)
+
+        self.label_17 = QLabel(self.Workflow1)
+        self.label_17.setObjectName(u"label_17")
+
+        self.gridLayout_14.addWidget(self.label_17, 0, 0, 1, 1)
+
+        self.horizontalSpacer_8 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_14.addItem(self.horizontalSpacer_8, 0, 1, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.Workflow1, 0, 0, 1, 1)
+
+        self.Workflow2 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow2.setObjectName(u"Workflow2")
+        self.Workflow2.setMinimumSize(QSize(0, 75))
+        self.Workflow2.setMaximumSize(QSize(16777215, 75))
+        self.Workflow2.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow2.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_17 = QGridLayout(self.Workflow2)
+        self.gridLayout_17.setObjectName(u"gridLayout_17")
+        self.label_20 = QLabel(self.Workflow2)
+        self.label_20.setObjectName(u"label_20")
+
+        self.gridLayout_17.addWidget(self.label_20, 0, 0, 1, 1)
+
+        self.horizontalSpacer_11 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_17.addItem(self.horizontalSpacer_11, 0, 1, 1, 1)
+
+        self.StartWorkflow2 = QPushButton(self.Workflow2)
+        self.StartWorkflow2.setObjectName(u"StartWorkflow2")
+        self.StartWorkflow2.setMinimumSize(QSize(50, 50))
+        self.StartWorkflow2.setMaximumSize(QSize(50, 50))
+        self.StartWorkflow2.setIcon(icon4)
+        self.StartWorkflow2.setIconSize(QSize(50, 50))
+        self.StartWorkflow2.setFlat(True)
+
+        self.gridLayout_17.addWidget(self.StartWorkflow2, 0, 2, 1, 1)
+
+        self.DeleteWorkflow2 = QPushButton(self.Workflow2)
+        self.DeleteWorkflow2.setObjectName(u"DeleteWorkflow2")
+        self.DeleteWorkflow2.setMinimumSize(QSize(50, 50))
+        self.DeleteWorkflow2.setMaximumSize(QSize(50, 50))
+        self.DeleteWorkflow2.setStyleSheet(u"")
+        self.DeleteWorkflow2.setIcon(icon5)
+        self.DeleteWorkflow2.setIconSize(QSize(50, 50))
+        self.DeleteWorkflow2.setFlat(True)
+
+        self.gridLayout_17.addWidget(self.DeleteWorkflow2, 0, 3, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.Workflow2, 1, 0, 1, 1)
+
+        self.Workflow3 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow3.setObjectName(u"Workflow3")
+        self.Workflow3.setMinimumSize(QSize(0, 75))
+        self.Workflow3.setMaximumSize(QSize(16777215, 75))
+        self.Workflow3.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow3.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_13 = QGridLayout(self.Workflow3)
+        self.gridLayout_13.setObjectName(u"gridLayout_13")
+        self.label_16 = QLabel(self.Workflow3)
+        self.label_16.setObjectName(u"label_16")
+
+        self.gridLayout_13.addWidget(self.label_16, 0, 0, 1, 1)
+
+        self.horizontalSpacer_7 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_13.addItem(self.horizontalSpacer_7, 0, 1, 1, 1)
+
+        self.StartWorkflow3 = QPushButton(self.Workflow3)
+        self.StartWorkflow3.setObjectName(u"StartWorkflow3")
+        self.StartWorkflow3.setMinimumSize(QSize(50, 50))
+        self.StartWorkflow3.setMaximumSize(QSize(50, 50))
+        self.StartWorkflow3.setIcon(icon4)
+        self.StartWorkflow3.setIconSize(QSize(50, 50))
+        self.StartWorkflow3.setFlat(True)
+
+        self.gridLayout_13.addWidget(self.StartWorkflow3, 0, 2, 1, 1)
+
+        self.DeleteWorkflow3 = QPushButton(self.Workflow3)
+        self.DeleteWorkflow3.setObjectName(u"DeleteWorkflow3")
+        self.DeleteWorkflow3.setMinimumSize(QSize(50, 50))
+        self.DeleteWorkflow3.setMaximumSize(QSize(50, 50))
+        self.DeleteWorkflow3.setIcon(icon5)
+        self.DeleteWorkflow3.setIconSize(QSize(50, 50))
+        self.DeleteWorkflow3.setFlat(True)
+
+        self.gridLayout_13.addWidget(self.DeleteWorkflow3, 0, 3, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.Workflow3, 2, 0, 1, 1)
+
+        self.Workflow4 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow4.setObjectName(u"Workflow4")
+        self.Workflow4.setMinimumSize(QSize(0, 75))
+        self.Workflow4.setMaximumSize(QSize(16777215, 75))
+        self.Workflow4.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow4.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow4.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_16 = QGridLayout(self.Workflow4)
+        self.gridLayout_16.setObjectName(u"gridLayout_16")
+        self.label_19 = QLabel(self.Workflow4)
+        self.label_19.setObjectName(u"label_19")
+
+        self.gridLayout_16.addWidget(self.label_19, 0, 0, 1, 1)
+
+        self.horizontalSpacer_10 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_16.addItem(self.horizontalSpacer_10, 0, 1, 1, 1)
+
+        self.StartWorkflow4 = QPushButton(self.Workflow4)
+        self.StartWorkflow4.setObjectName(u"StartWorkflow4")
+        self.StartWorkflow4.setMinimumSize(QSize(50, 50))
+        self.StartWorkflow4.setMaximumSize(QSize(50, 50))
+        self.StartWorkflow4.setIcon(icon4)
+        self.StartWorkflow4.setIconSize(QSize(50, 50))
+        self.StartWorkflow4.setFlat(True)
+
+        self.gridLayout_16.addWidget(self.StartWorkflow4, 0, 2, 1, 1)
+
+        self.DeleteWorkflow4 = QPushButton(self.Workflow4)
+        self.DeleteWorkflow4.setObjectName(u"DeleteWorkflow4")
+        self.DeleteWorkflow4.setMinimumSize(QSize(50, 50))
+        self.DeleteWorkflow4.setMaximumSize(QSize(50, 50))
+        self.DeleteWorkflow4.setIcon(icon5)
+        self.DeleteWorkflow4.setIconSize(QSize(50, 50))
+        self.DeleteWorkflow4.setFlat(True)
+
+        self.gridLayout_16.addWidget(self.DeleteWorkflow4, 0, 3, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.Workflow4, 3, 0, 1, 1)
+
+        self.Workflow5 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow5.setObjectName(u"Workflow5")
+        self.Workflow5.setMinimumSize(QSize(0, 75))
+        self.Workflow5.setMaximumSize(QSize(16777215, 75))
+        self.Workflow5.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow5.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow5.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_15 = QGridLayout(self.Workflow5)
+        self.gridLayout_15.setObjectName(u"gridLayout_15")
+        self.VerticalSpacer_Temp = QFrame(self.scrollAreaWidgetContents)
+        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_6.addItem(self.verticalSpacer_3, 5, 0, 1, 1)
+        self.gridLayout_15.addItem(self.horizontalSpacer_9, 1, 1, 1, 1)
+
+        self.DeleteWorkflow5 = QPushButton(self.Workflow5)
+        self.DeleteWorkflow5.setObjectName(u"DeleteWorkflow5")
+        self.DeleteWorkflow5.setMinimumSize(QSize(50, 50))
+        self.DeleteWorkflow5.setMaximumSize(QSize(50, 50))
+        self.DeleteWorkflow5.setIcon(icon5)
+        self.DeleteWorkflow5.setIconSize(QSize(50, 50))
+        self.DeleteWorkflow5.setFlat(True)
+
+        self.gridLayout_15.addWidget(self.DeleteWorkflow5, 1, 3, 1, 1)
+
+        self.label_18 = QLabel(self.Workflow5)
+        self.label_18.setObjectName(u"label_18")
+
+        self.gridLayout_15.addWidget(self.label_18, 1, 0, 1, 1)
+
+        self.StartWorkflow5 = QPushButton(self.Workflow5)
+        self.StartWorkflow5.setObjectName(u"StartWorkflow5")
+        self.StartWorkflow5.setMinimumSize(QSize(50, 50))
+        self.StartWorkflow5.setMaximumSize(QSize(50, 50))
+        self.StartWorkflow5.setIcon(icon4)
+        self.StartWorkflow5.setIconSize(QSize(50, 50))
+        self.StartWorkflow5.setFlat(True)
+
+        self.gridLayout_15.addWidget(self.StartWorkflow5, 1, 2, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.Workflow5, 4, 0, 1, 1)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.gridLayout_8.addWidget(self.scrollArea, 2, 0, 1, 1)
 
         self.label = QLabel(self.Workflows)
         self.label.setObjectName(u"label")
 
-        self.gridLayout_8.addWidget(self.label, 0, 0, 1, 1)
+        self.gridLayout_8.addWidget(self.label, 1, 0, 1, 1)
 
-        self.Text = QFrame(self.Workflows)
-        self.Text.setObjectName(u"Text")
-        self.Text.setMinimumSize(QSize(0, 30))
-        self.Text.setMaximumSize(QSize(16777215, 30))
-        self.Text.setStyleSheet(u"background: transparent; border: transparent;")
-        self.Text.setFrameShape(QFrame.Shape.StyledPanel)
-        self.Text.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_6 = QGridLayout(self.Text)
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.gridLayout_6.setContentsMargins(0, 0, 0, 10)
-        self.TextInput = QTextEdit(self.Text)
-        self.TextInput.setObjectName(u"TextInput")
-        sizePolicy3.setHeightForWidth(self.TextInput.sizePolicy().hasHeightForWidth())
-        self.TextInput.setSizePolicy(sizePolicy3)
-        self.TextInput.setMinimumSize(QSize(0, 30))
-        self.TextInput.setMaximumSize(QSize(16777215, 16777215))
-        font = QFont()
-        font.setPointSize(9)
-        font.setStyleStrategy(QFont.PreferDefault)
-        self.TextInput.setFont(font)
-        self.TextInput.setAutoFillBackground(False)
-        self.TextInput.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.TextInput.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.pushButton = QPushButton(self.Workflows)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setMinimumSize(QSize(0, 50))
 
-        self.gridLayout_6.addWidget(self.TextInput, 0, 1, 2, 1, Qt.AlignmentFlag.AlignVCenter)
-
-        self.label_7 = QLabel(self.Text)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setMinimumSize(QSize(0, 30))
-
-        self.gridLayout_6.addWidget(self.label_7, 0, 0, 1, 1)
-
-
-        self.gridLayout_8.addWidget(self.Text, 2, 1, 1, 1)
-
-        self.hotkeyClick = QPushButton(self.Workflows)
-        self.hotkeyClick.setObjectName(u"hotkeyClick")
-
-        self.gridLayout_8.addWidget(self.hotkeyClick, 1, 1, 1, 1)
-
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout_8.addItem(self.verticalSpacer_3, 8, 0, 1, 1)
-
-        self.frame_2 = QFrame(self.Workflows)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMinimumSize(QSize(0, 20))
-        self.frame_2.setMaximumSize(QSize(16777215, 40))
-        self.frame_2.setStyleSheet(u"border: transparent; background: transparent;")
-        self.frame_2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout = QHBoxLayout(self.frame_2)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.CoordinatesLabel = QLabel(self.frame_2)
-        self.CoordinatesLabel.setObjectName(u"CoordinatesLabel")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.CoordinatesLabel.sizePolicy().hasHeightForWidth())
-        self.CoordinatesLabel.setSizePolicy(sizePolicy4)
-        self.CoordinatesLabel.setMinimumSize(QSize(100, 0))
-
-        self.horizontalLayout.addWidget(self.CoordinatesLabel, 0, Qt.AlignmentFlag.AlignTop)
-
-        self.xcoord = QTextEdit(self.frame_2)
-        self.xcoord.setObjectName(u"xcoord")
-        self.xcoord.setMaximumSize(QSize(16777215, 30))
-        self.xcoord.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.xcoord.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-
-        self.horizontalLayout.addWidget(self.xcoord)
-
-        self.ycoord = QTextEdit(self.frame_2)
-        self.ycoord.setObjectName(u"ycoord")
-        self.ycoord.setMaximumSize(QSize(16777215, 30))
-        self.ycoord.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.ycoord.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-
-        self.horizontalLayout.addWidget(self.ycoord, 0, Qt.AlignmentFlag.AlignTop)
-
-
-        self.gridLayout_8.addWidget(self.frame_2, 6, 1, 1, 1)
-
-        self.label_5 = QLabel(self.Workflows)
-        self.label_5.setObjectName(u"label_5")
-
-        self.gridLayout_8.addWidget(self.label_5, 4, 0, 1, 1)
-
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout_8.addItem(self.verticalSpacer_4, 8, 1, 1, 1)
-
-        self.frame = QFrame(self.Workflows)
-        self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(0, 30))
-        self.frame.setMaximumSize(QSize(16777215, 40))
-        self.frame.setStyleSheet(u"border: transparent; background: transparent;")
-        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_9 = QGridLayout(self.frame)
-        self.gridLayout_9.setObjectName(u"gridLayout_9")
-        self.gridLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.label_8 = QLabel(self.frame)
-        self.label_8.setObjectName(u"label_8")
-
-        self.gridLayout_9.addWidget(self.label_8, 0, 0, 1, 1)
-
-        self.textEdit_2 = QTextEdit(self.frame)
-        self.textEdit_2.setObjectName(u"textEdit_2")
-        self.textEdit_2.setMinimumSize(QSize(0, 30))
-        self.textEdit_2.setMaximumSize(QSize(16777215, 30))
-        font1 = QFont()
-        font1.setPointSize(8)
-        self.textEdit_2.setFont(font1)
-        self.textEdit_2.setStyleSheet(u"border: transparent; background: transparent;")
-        self.textEdit_2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-
-        self.gridLayout_9.addWidget(self.textEdit_2, 0, 1, 1, 1,Qt.AlignmentFlag.AlignVCenter)
-
-
-        self.gridLayout_8.addWidget(self.frame, 3, 1, 1, 1)
-
-        self.label_4 = QLabel(self.Workflows)
-        self.label_4.setObjectName(u"label_4")
-
-        self.gridLayout_8.addWidget(self.label_4, 0, 1, 1, 1)
-
-        self.XYButton = QPushButton(self.Workflows)
-        self.XYButton.setObjectName(u"XYButton")
-
-        self.gridLayout_8.addWidget(self.XYButton, 5, 1, 1, 1)
-
-        self.imgRec = QPushButton(self.Workflows)
-        self.imgRec.setObjectName(u"imgRec")
-
-        self.gridLayout_8.addWidget(self.imgRec, 5, 0, 1, 1)
-
-        self.buttonHTML = QPushButton(self.Workflows)
-        self.buttonHTML.setObjectName(u"buttonHTML")
-
-        self.gridLayout_8.addWidget(self.buttonHTML, 1, 0, 1, 1)
-
-        self.frame_3 = QFrame(self.Workflows)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setMinimumSize(QSize(0, 30))
-        self.frame_3.setMaximumSize(QSize(16777215, 40))
-        self.frame_3.setStyleSheet(u"border: transparent; background: transparent;")
-        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
-        self.horizontalLayout_2 = QHBoxLayout(self.frame_3)
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.HotkeyLabel = QLabel(self.frame_3)
-        self.HotkeyLabel.setObjectName(u"HotkeyLabel")
-
-        self.horizontalLayout_2.addWidget(self.HotkeyLabel)
-
-        self.HotkeyInput = QTextEdit(self.frame_3)
-        self.HotkeyInput.setObjectName(u"HotkeyInput")
-        self.HotkeyInput.setMinimumSize(QSize(0, 30))
-        self.HotkeyInput.setMaximumSize(QSize(16777215, 30))
-
-        self.horizontalLayout_2.addWidget(self.HotkeyInput)
-
-
-        self.gridLayout_8.addWidget(self.frame_3, 7, 1, 1, 1)
+        self.gridLayout_8.addWidget(self.pushButton, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.Workflows)
         self.Tools = QWidget()
@@ -389,11 +796,11 @@ class Ui_MainWindow(object):
 
         self.TopBar = QFrame(self.centralwidget)
         self.TopBar.setObjectName(u"TopBar")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.TopBar.sizePolicy().hasHeightForWidth())
-        self.TopBar.setSizePolicy(sizePolicy5)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.TopBar.sizePolicy().hasHeightForWidth())
+        self.TopBar.setSizePolicy(sizePolicy4)
         self.TopBar.setMinimumSize(QSize(50, 50))
         self.TopBar.setFrameShape(QFrame.Shape.StyledPanel)
         self.TopBar.setFrameShadow(QFrame.Shadow.Raised)
@@ -402,11 +809,11 @@ class Ui_MainWindow(object):
         self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
         self.label_2 = QLabel(self.TopBar)
         self.label_2.setObjectName(u"label_2")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy6)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy5)
 
         self.gridLayout_3.addWidget(self.label_2, 0, 2, 1, 1)
 
@@ -417,9 +824,9 @@ class Ui_MainWindow(object):
         self.MenuButton.setMinimumSize(QSize(50, 50))
         self.MenuButton.setMaximumSize(QSize(50, 50))
         self.MenuButton.setContextMenuPolicy(Qt.ContextMenuPolicy.NoContextMenu)
-        icon4 = QIcon()
-        icon4.addFile(u":/Icons/menu_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.MenuButton.setIcon(icon4)
+        icon6 = QIcon()
+        icon6.addFile(u":/Icons/menu_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.MenuButton.setIcon(icon6)
         self.MenuButton.setIconSize(QSize(50, 50))
         self.MenuButton.setFlat(True)
 
@@ -468,11 +875,11 @@ class Ui_MainWindow(object):
             self.HomepageButton.setStyleSheet('text-align:right')
 
         def compactMode():
-            savedsettings = open(r'Demo2\Script\Settings\compact-mode', 'r')
+            savedsettings = open(r'Demo2/Script/Settings/compact-mode', 'r')
             compacttext = savedsettings.read()
             if compacttext == 'False':
                 savedsettings.close()
-                settingstext = open(r'Demo2\Script\Settings\compact-mode', 'w')
+                settingstext = open(r'Demo2/Script/Settings/compact-mode', 'w')
                 settingstext.write('True')
                 settingstext.close()
                 self.MenuText.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:8pt; font-weight:700;\">Menu</span></p></body></html>", None))
@@ -492,7 +899,7 @@ class Ui_MainWindow(object):
                 self.SettingsButton.setStyleSheet('QPushButton {text-align: center;}')
             elif compacttext == 'True':
                 savedsettings.close()
-                settingstext = open(r'Demo2\Script\Settings\compact-mode', 'w')
+                settingstext = open(r'Demo2/Script/Settings/compact-mode', 'w')
                 settingstext.write('False')
                 settingstext.close()
                 self.MenuText.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Menu</span></p></body></html>", None))
@@ -507,23 +914,6 @@ class Ui_MainWindow(object):
                 self.HomepageButton.setStyleSheet('QPushButton{text-align: left;}')
                 self.SettingsButton.setStyleSheet('QPushButton{text-align: left;}')
         self.customToggle.stateChanged.connect(compactMode)    
-        def HTMLClickEvent():
-            print("MainWindow: Button clicked")
-            runSeleniumWorker()
-        def TypeWorkerEvent():
-            hotkey=self.textEdit_2.toPlainText()
-            content=self.TextInput.toPlainText()
-            runTypeWorker(hotkey=hotkey, content=content)
-        def ClickWorkerEvent():
-            xcoord=self.xcoord.toPlainText()
-            ycoord=self.ycoord.toPlainText()
-            hotkey=self.HotkeyInput.toPlainText()
-            runClickWorker(x=xcoord, y=ycoord, hotkey=hotkey)
-        self.buttonHTML.clicked.connect(HTMLClickEvent)
-        self.XYButton.clicked.connect(ClickWorkerEvent)
-        self.TextInput.setText('skibdi')
-        self.textEdit_2.setText(']')
-        self.hotkeyClick.clicked.connect(TypeWorkerEvent)
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -535,35 +925,28 @@ class Ui_MainWindow(object):
         self.ToolsButton.setText(QCoreApplication.translate("MainWindow", u"Tools", None))
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"This is the draft of an app meant to automate certain tasks. It is going to be made for Daniel Emmer's Personal Project. ", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">What is this?</span></p></body></html>", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Hotkey Trigger (stop with esc)", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Button Trigger", None))
-        self.TextInput.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
-        self.TextInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Your text here", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Text", None))
-        self.hotkeyClick.setText(QCoreApplication.translate("MainWindow", u"Typing in a specified location", None))
-        self.CoordinatesLabel.setText(QCoreApplication.translate("MainWindow", u"Coordinates", None))
-        self.xcoord.setPlaceholderText(QCoreApplication.translate("MainWindow", u"X-Coord", None))
-        self.ycoord.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Y-Coord", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"no clue :3", None))
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Hotkey", None))
-        self.textEdit_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Hotkey here", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Hotkey Trigger (stop with esc)", None))
-        self.XYButton.setText(QCoreApplication.translate("MainWindow", u"Clicking in a specified location", None))
-        self.imgRec.setText(QCoreApplication.translate("MainWindow", u"Clicking on a location based on image", None))
-        self.buttonHTML.setText(QCoreApplication.translate("MainWindow", u"Clicking on HTML elements", None))
-        self.HotkeyLabel.setText(QCoreApplication.translate("MainWindow", u"Hotkey", None))
-        self.HotkeyInput.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Hotkey here", None))
+        self.StartWorkflow1.setText("")
+        self.DeleteWorkflow1.setText("")
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Workflow 1", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Workflow 2", None))
+        self.StartWorkflow2.setText("")
+        self.DeleteWorkflow2.setText("")
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Workflow 3", None))
+        self.StartWorkflow3.setText("")
+        self.DeleteWorkflow3.setText("")
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Workflow 4", None))
+        self.StartWorkflow4.setText("")
+        self.DeleteWorkflow4.setText("")
+        self.DeleteWorkflow5.setText("")
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Workflow 5", None))
+        self.StartWorkflow5.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Current Workflows</span></p></body></html>", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Open Workflow Creator", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"This part is an extra part of the app, if I finish and still want to keep going to improve the user experience of the app, etc. I will only need to do this after I finish all of the other parts of my app.", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700;\">Compact Mode</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Page Name</span></p></body></html>", None))
         self.MenuButton.setText("")
+    # retranslateUi
         def setButtonSize(iconsize, buttonwidth):
             self.SettingsButton.setIconSize(QSize(iconsize, iconsize))
             self.HomepageButton.setIconSize(QSize(iconsize, iconsize))
@@ -619,5 +1002,78 @@ class Ui_MainWindow(object):
             self.WorkflowsButton.setStyleSheet('QPushButton{text-align: left;}')
             self.HomepageButton.setStyleSheet('QPushButton{text-align: left;}')
             self.SettingsButton.setStyleSheet('QPushButton{text-align: left;}')
-    # retranslateUi
+            Workflow1Exists = isfile(r'Demo2\workflows\workflow1.py')
+            Workflow22Exists = isfile(r'Demo2\workflows\workflow2.py')
+            Workflow3Exists = isfile(r'Demo2\workflows\workflow3.py')
+            Workflow4Exists = isfile(r'Demo2\workflows\workflow4.py')
+            Workflow5Exists = isfile(r'Demo2\workflows\workflow5.py')
+            if Workflow1Exists is True:
+                self.Workflow1.setVisible(True)
+            else:
+                self.Workflow1.setVisible(False)
+            if Workflow22Exists is True:
+                self.Workflow2.setVisible(True)
+            else:
+                self.Workflow2.setVisible(False)
+            if Workflow3Exists is True:
+                self.Workflow3.setVisible(True)
+            else:
+                self.Workflow3.setVisible(False)
+            if Workflow4Exists is True:
+                self.Workflow4.setVisible(True)
+            else:
+                self.Workflow4.setVisible(False)
+            if Workflow5Exists is True:
+                self.Workflow5.setVisible(True)
+            else:
+                self.Workflow5.setVisible(False)
+            class runStart:
+                def run(self, num):
+                    from pyautogui import typewrite, click
+                    import keyboard
+                    import undetected_chromedriver as uc
+                    from selenium.webdriver.common.by import By
+                    from selenium.webdriver.support import expected_conditions as EC
+                    from time import sleep as wait
+                    from os import _exit
+                    globals_dict = {
+                        'typewrite': typewrite,
+                        'click': click,
+                        'keyboard': keyboard,
+                        'uc': uc,
+                        'By': By,
+                        'EC': EC,
+                        'wait': wait,
+                        '_exit': _exit
+                    }
+                    exec(open(r'Demo2\workflows\workflow' + str(num) + '.py').read(), globals_dict)
+            def runStartWorkflow(num):
+                worker = runStart()
+                thread = threading.Thread(target=worker.run, args=(num,))  
+                thread.start()
+            
+            self.StartWorkflow1.clicked.connect(lambda: runStartWorkflow(1))
+            self.StartWorkflow2.clicked.connect(lambda: runStartWorkflow(2))
+            self.StartWorkflow3.clicked.connect(lambda: runStartWorkflow(3))
+            self.StartWorkflow4.clicked.connect(lambda: runStartWorkflow(4))
+            self.StartWorkflow5.clicked.connect(lambda: runStart(5))
+            class runDelete():
+                def run(self,num):
+                    remove(f'Demo2/workflows/workflow{num}.py')
+                        
+
+            def runDeleteWorkflow(num):
+                worker = runDelete()
+                thread = threading.Thread(target=worker.run, args=(num,))  
+                thread.start()
+            self.DeleteWorkflow1.clicked.connect(lambda: runDeleteWorkflow(1))
+            self.DeleteWorkflow2.clicked.connect(lambda: runDeleteWorkflow(2))
+            self.DeleteWorkflow3.clicked.connect(lambda: runDeleteWorkflow(3))
+            self.DeleteWorkflow4.clicked.connect(lambda: runDeleteWorkflow(4))
+            self.DeleteWorkflow5.clicked
+
+            
+
+
+    # setupUi
 
