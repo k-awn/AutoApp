@@ -20,6 +20,6 @@ def response():
 	driver.maximize_window()
 	driver.get("https://google.com")
 
-keyboard.add_hotkey("]", response, suppress=True, trigger_on_release=True, timeout=1) 
+keyboard.add_hotkey("`", response, suppress=True, trigger_on_release=True, timeout=1) 
 keyboard.wait("esc")
 _exit(0)

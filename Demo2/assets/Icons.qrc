@@ -1,7 +1,10 @@
 <RCC>
   <qresource prefix="Icons">
-    <file>start_icon.png</file>
+    <file>copy_icon.png</file>
     <file>delete_icon.png</file>
+    <file>editName_icon.png</file>
+    <file>editWorkflow_icon.png</file>
+    <file>start_icon.png</file>
     <file>account_tree_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png</file>
     <file>build_circle_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png</file>
     <file>menu_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png</file>

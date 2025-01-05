@@ -16,15 +16,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QFrame, QGridLayout,
-    QLabel, QMainWindow, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QStackedWidget, QWidget)
+    QHBoxLayout, QLabel, QMainWindow, QPushButton,
+    QScrollArea, QSizePolicy, QSpacerItem, QStackedWidget,
+    QWidget)
 import Icons_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(731, 558)
+        MainWindow.resize(774, 558)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -134,9 +135,9 @@ class Ui_MainWindow(object):
         self.Pages.setMinimumSize(QSize(600, 0))
         self.Pages.setFrameShape(QFrame.Shape.StyledPanel)
         self.Pages.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_4 = QGridLayout(self.Pages)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_2 = QFormLayout(self.Pages)
+        self.formLayout_2.setObjectName(u"formLayout_2")
+        self.formLayout_2.setContentsMargins(0, 0, 0, 0)
         self.stackedWidget = QStackedWidget(self.Pages)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setMinimumSize(QSize(500, 500))
@@ -149,20 +150,32 @@ class Ui_MainWindow(object):
         self.Homepage.setObjectName(u"Homepage")
         self.gridLayout_5 = QGridLayout(self.Homepage)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.label_12 = QLabel(self.Homepage)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setWordWrap(True)
+        self.label_6 = QLabel(self.Homepage)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setWordWrap(True)
 
-        self.gridLayout_5.addWidget(self.label_12, 1, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
+        self.gridLayout_5.addWidget(self.label_6, 3, 0, 1, 1)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_5, 4, 0, 1, 1)
+
+        self.label_5 = QLabel(self.Homepage)
+        self.label_5.setObjectName(u"label_5")
+
+        self.gridLayout_5.addWidget(self.label_5, 2, 0, 1, 1)
 
         self.label_11 = QLabel(self.Homepage)
         self.label_11.setObjectName(u"label_11")
 
         self.gridLayout_5.addWidget(self.label_11, 0, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
 
-        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.label_12 = QLabel(self.Homepage)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setMinimumSize(QSize(0, 50))
+        self.label_12.setWordWrap(True)
 
-        self.gridLayout_5.addItem(self.verticalSpacer_5, 2, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.label_12, 1, 0, 1, 1, Qt.AlignmentFlag.AlignTop)
 
         self.stackedWidget.addWidget(self.Homepage)
         self.Workflows = QWidget()
@@ -174,136 +187,12 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, -27, 566, 423))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 245, 423))
         self.gridLayout_6 = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.Workflow3 = QFrame(self.scrollAreaWidgetContents)
-        self.Workflow3.setObjectName(u"Workflow3")
-        self.Workflow3.setMinimumSize(QSize(0, 75))
-        self.Workflow3.setMaximumSize(QSize(16777215, 75))
-        self.Workflow3.setStyleSheet(u"QFrame { border: none; }")
-        self.Workflow3.setFrameShape(QFrame.Shape.StyledPanel)
-        self.Workflow3.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_13 = QGridLayout(self.Workflow3)
-        self.gridLayout_13.setObjectName(u"gridLayout_13")
-        self.label_16 = QLabel(self.Workflow3)
-        self.label_16.setObjectName(u"label_16")
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_13.addWidget(self.label_16, 0, 0, 1, 1)
-
-        self.horizontalSpacer_7 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_13.addItem(self.horizontalSpacer_7, 0, 1, 1, 1)
-
-        self.StartWorkflow3 = QPushButton(self.Workflow3)
-        self.StartWorkflow3.setObjectName(u"StartWorkflow3")
-        self.StartWorkflow3.setMinimumSize(QSize(50, 50))
-        self.StartWorkflow3.setMaximumSize(QSize(50, 50))
-        icon4 = QIcon()
-        icon4.addFile(u":/Icons/start_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.StartWorkflow3.setIcon(icon4)
-        self.StartWorkflow3.setIconSize(QSize(50, 50))
-        self.StartWorkflow3.setFlat(True)
-
-        self.gridLayout_13.addWidget(self.StartWorkflow3, 0, 2, 1, 1)
-
-        self.DeleteWorkflow3 = QPushButton(self.Workflow3)
-        self.DeleteWorkflow3.setObjectName(u"DeleteWorkflow3")
-        self.DeleteWorkflow3.setMinimumSize(QSize(50, 50))
-        self.DeleteWorkflow3.setMaximumSize(QSize(50, 50))
-        icon5 = QIcon()
-        icon5.addFile(u":/Icons/delete_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.DeleteWorkflow3.setIcon(icon5)
-        self.DeleteWorkflow3.setIconSize(QSize(50, 50))
-        self.DeleteWorkflow3.setFlat(True)
-
-        self.gridLayout_13.addWidget(self.DeleteWorkflow3, 0, 3, 1, 1)
-
-
-        self.gridLayout_6.addWidget(self.Workflow3, 2, 0, 1, 1)
-
-        self.Workflow1 = QFrame(self.scrollAreaWidgetContents)
-        self.Workflow1.setObjectName(u"Workflow1")
-        self.Workflow1.setMinimumSize(QSize(0, 75))
-        self.Workflow1.setMaximumSize(QSize(16777215, 75))
-        self.Workflow1.setStyleSheet(u"QFrame { border: none; }")
-        self.Workflow1.setFrameShape(QFrame.Shape.StyledPanel)
-        self.Workflow1.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_14 = QGridLayout(self.Workflow1)
-        self.gridLayout_14.setObjectName(u"gridLayout_14")
-        self.StartWorkflow1 = QPushButton(self.Workflow1)
-        self.StartWorkflow1.setObjectName(u"StartWorkflow1")
-        self.StartWorkflow1.setMinimumSize(QSize(50, 50))
-        self.StartWorkflow1.setMaximumSize(QSize(50, 50))
-        self.StartWorkflow1.setIcon(icon4)
-        self.StartWorkflow1.setIconSize(QSize(50, 50))
-        self.StartWorkflow1.setFlat(True)
-
-        self.gridLayout_14.addWidget(self.StartWorkflow1, 0, 2, 1, 1)
-
-        self.DeleteWorkflow1 = QPushButton(self.Workflow1)
-        self.DeleteWorkflow1.setObjectName(u"DeleteWorkflow1")
-        self.DeleteWorkflow1.setMinimumSize(QSize(50, 50))
-        self.DeleteWorkflow1.setMaximumSize(QSize(50, 50))
-        self.DeleteWorkflow1.setIcon(icon5)
-        self.DeleteWorkflow1.setIconSize(QSize(50, 50))
-        self.DeleteWorkflow1.setFlat(True)
-
-        self.gridLayout_14.addWidget(self.DeleteWorkflow1, 0, 3, 1, 1)
-
-        self.label_17 = QLabel(self.Workflow1)
-        self.label_17.setObjectName(u"label_17")
-
-        self.gridLayout_14.addWidget(self.label_17, 0, 0, 1, 1)
-
-        self.horizontalSpacer_8 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_14.addItem(self.horizontalSpacer_8, 0, 1, 1, 1)
-
-
-        self.gridLayout_6.addWidget(self.Workflow1, 0, 0, 1, 1)
-
-        self.Workflow2 = QFrame(self.scrollAreaWidgetContents)
-        self.Workflow2.setObjectName(u"Workflow2")
-        self.Workflow2.setMinimumSize(QSize(0, 75))
-        self.Workflow2.setMaximumSize(QSize(16777215, 75))
-        self.Workflow2.setStyleSheet(u"QFrame { border: none; }")
-        self.Workflow2.setFrameShape(QFrame.Shape.StyledPanel)
-        self.Workflow2.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_17 = QGridLayout(self.Workflow2)
-        self.gridLayout_17.setObjectName(u"gridLayout_17")
-        self.label_20 = QLabel(self.Workflow2)
-        self.label_20.setObjectName(u"label_20")
-
-        self.gridLayout_17.addWidget(self.label_20, 0, 0, 1, 1)
-
-        self.horizontalSpacer_11 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout_17.addItem(self.horizontalSpacer_11, 0, 1, 1, 1)
-
-        self.StartWorkflow2 = QPushButton(self.Workflow2)
-        self.StartWorkflow2.setObjectName(u"StartWorkflow2")
-        self.StartWorkflow2.setMinimumSize(QSize(50, 50))
-        self.StartWorkflow2.setMaximumSize(QSize(50, 50))
-        self.StartWorkflow2.setIcon(icon4)
-        self.StartWorkflow2.setIconSize(QSize(50, 50))
-        self.StartWorkflow2.setFlat(True)
-
-        self.gridLayout_17.addWidget(self.StartWorkflow2, 0, 2, 1, 1)
-
-        self.DeleteWorkflow2 = QPushButton(self.Workflow2)
-        self.DeleteWorkflow2.setObjectName(u"DeleteWorkflow2")
-        self.DeleteWorkflow2.setMinimumSize(QSize(50, 50))
-        self.DeleteWorkflow2.setMaximumSize(QSize(50, 50))
-        self.DeleteWorkflow2.setStyleSheet(u"")
-        self.DeleteWorkflow2.setIcon(icon5)
-        self.DeleteWorkflow2.setIconSize(QSize(50, 50))
-        self.DeleteWorkflow2.setFlat(True)
-
-        self.gridLayout_17.addWidget(self.DeleteWorkflow2, 0, 3, 1, 1)
-
-
-        self.gridLayout_6.addWidget(self.Workflow2, 1, 0, 1, 1)
+        self.gridLayout_6.addItem(self.verticalSpacer_3, 5, 0, 1, 1)
 
         self.Workflow5 = QFrame(self.scrollAreaWidgetContents)
         self.Workflow5.setObjectName(u"Workflow5")
@@ -312,36 +201,56 @@ class Ui_MainWindow(object):
         self.Workflow5.setStyleSheet(u"QFrame { border: none; }")
         self.Workflow5.setFrameShape(QFrame.Shape.StyledPanel)
         self.Workflow5.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_15 = QGridLayout(self.Workflow5)
-        self.gridLayout_15.setObjectName(u"gridLayout_15")
-        self.label_18 = QLabel(self.Workflow5)
-        self.label_18.setObjectName(u"label_18")
+        self.horizontalLayout_4 = QHBoxLayout(self.Workflow5)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.RenameWorkflow5 = QPushButton(self.Workflow5)
+        self.RenameWorkflow5.setObjectName(u"RenameWorkflow5")
+        self.RenameWorkflow5.setMinimumSize(QSize(30, 30))
+        self.RenameWorkflow5.setMaximumSize(QSize(30, 30))
+        icon4 = QIcon()
+        icon4.addFile(u":/Icons/editName_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.RenameWorkflow5.setIcon(icon4)
+        self.RenameWorkflow5.setIconSize(QSize(20, 20))
+        self.RenameWorkflow5.setFlat(True)
 
-        self.gridLayout_15.addWidget(self.label_18, 1, 0, 1, 1)
+        self.horizontalLayout_4.addWidget(self.RenameWorkflow5)
 
-        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.Workflow5Name = QLabel(self.Workflow5)
+        self.Workflow5Name.setObjectName(u"Workflow5Name")
 
-        self.gridLayout_15.addItem(self.horizontalSpacer_9, 1, 1, 1, 1)
+        self.horizontalLayout_4.addWidget(self.Workflow5Name)
 
-        self.DeleteWorkflow5 = QPushButton(self.Workflow5)
-        self.DeleteWorkflow5.setObjectName(u"DeleteWorkflow5")
-        self.DeleteWorkflow5.setMinimumSize(QSize(50, 50))
-        self.DeleteWorkflow5.setMaximumSize(QSize(50, 50))
-        self.DeleteWorkflow5.setIcon(icon5)
-        self.DeleteWorkflow5.setIconSize(QSize(50, 50))
-        self.DeleteWorkflow5.setFlat(True)
+        self.horizontalSpacer_15 = QSpacerItem(309, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_15.addWidget(self.DeleteWorkflow5, 1, 3, 1, 1)
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_15)
 
         self.StartWorkflow5 = QPushButton(self.Workflow5)
         self.StartWorkflow5.setObjectName(u"StartWorkflow5")
-        self.StartWorkflow5.setMinimumSize(QSize(50, 50))
-        self.StartWorkflow5.setMaximumSize(QSize(50, 50))
-        self.StartWorkflow5.setIcon(icon4)
-        self.StartWorkflow5.setIconSize(QSize(50, 50))
+        sizePolicy1.setHeightForWidth(self.StartWorkflow5.sizePolicy().hasHeightForWidth())
+        self.StartWorkflow5.setSizePolicy(sizePolicy1)
+        self.StartWorkflow5.setMinimumSize(QSize(40, 40))
+        self.StartWorkflow5.setMaximumSize(QSize(40, 40))
+        icon5 = QIcon()
+        icon5.addFile(u":/Icons/start_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.StartWorkflow5.setIcon(icon5)
+        self.StartWorkflow5.setIconSize(QSize(40, 40))
         self.StartWorkflow5.setFlat(True)
 
-        self.gridLayout_15.addWidget(self.StartWorkflow5, 1, 2, 1, 1)
+        self.horizontalLayout_4.addWidget(self.StartWorkflow5)
+
+        self.DeleteWorkflow5 = QPushButton(self.Workflow5)
+        self.DeleteWorkflow5.setObjectName(u"DeleteWorkflow5")
+        sizePolicy1.setHeightForWidth(self.DeleteWorkflow5.sizePolicy().hasHeightForWidth())
+        self.DeleteWorkflow5.setSizePolicy(sizePolicy1)
+        self.DeleteWorkflow5.setMinimumSize(QSize(40, 40))
+        self.DeleteWorkflow5.setMaximumSize(QSize(40, 40))
+        icon6 = QIcon()
+        icon6.addFile(u":/Icons/delete_icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.DeleteWorkflow5.setIcon(icon6)
+        self.DeleteWorkflow5.setIconSize(QSize(40, 40))
+        self.DeleteWorkflow5.setFlat(True)
+
+        self.horizontalLayout_4.addWidget(self.DeleteWorkflow5)
 
 
         self.gridLayout_6.addWidget(self.Workflow5, 4, 0, 1, 1)
@@ -353,43 +262,218 @@ class Ui_MainWindow(object):
         self.Workflow4.setStyleSheet(u"QFrame { border: none; }")
         self.Workflow4.setFrameShape(QFrame.Shape.StyledPanel)
         self.Workflow4.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_16 = QGridLayout(self.Workflow4)
-        self.gridLayout_16.setObjectName(u"gridLayout_16")
-        self.label_19 = QLabel(self.Workflow4)
-        self.label_19.setObjectName(u"label_19")
+        self.horizontalLayout = QHBoxLayout(self.Workflow4)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.RenameWorkflow4 = QPushButton(self.Workflow4)
+        self.RenameWorkflow4.setObjectName(u"RenameWorkflow4")
+        self.RenameWorkflow4.setMinimumSize(QSize(30, 30))
+        self.RenameWorkflow4.setMaximumSize(QSize(30, 30))
+        self.RenameWorkflow4.setIcon(icon4)
+        self.RenameWorkflow4.setIconSize(QSize(20, 20))
+        self.RenameWorkflow4.setFlat(True)
 
-        self.gridLayout_16.addWidget(self.label_19, 0, 0, 1, 1)
+        self.horizontalLayout.addWidget(self.RenameWorkflow4)
 
-        self.horizontalSpacer_10 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.Workflow4Name = QLabel(self.Workflow4)
+        self.Workflow4Name.setObjectName(u"Workflow4Name")
 
-        self.gridLayout_16.addItem(self.horizontalSpacer_10, 0, 1, 1, 1)
+        self.horizontalLayout.addWidget(self.Workflow4Name)
+
+        self.horizontalSpacer_14 = QSpacerItem(309, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_14)
 
         self.StartWorkflow4 = QPushButton(self.Workflow4)
         self.StartWorkflow4.setObjectName(u"StartWorkflow4")
-        self.StartWorkflow4.setMinimumSize(QSize(50, 50))
-        self.StartWorkflow4.setMaximumSize(QSize(50, 50))
-        self.StartWorkflow4.setIcon(icon4)
-        self.StartWorkflow4.setIconSize(QSize(50, 50))
+        sizePolicy1.setHeightForWidth(self.StartWorkflow4.sizePolicy().hasHeightForWidth())
+        self.StartWorkflow4.setSizePolicy(sizePolicy1)
+        self.StartWorkflow4.setMinimumSize(QSize(40, 40))
+        self.StartWorkflow4.setMaximumSize(QSize(40, 40))
+        self.StartWorkflow4.setIcon(icon5)
+        self.StartWorkflow4.setIconSize(QSize(40, 40))
         self.StartWorkflow4.setFlat(True)
 
-        self.gridLayout_16.addWidget(self.StartWorkflow4, 0, 2, 1, 1)
+        self.horizontalLayout.addWidget(self.StartWorkflow4)
 
         self.DeleteWorkflow4 = QPushButton(self.Workflow4)
         self.DeleteWorkflow4.setObjectName(u"DeleteWorkflow4")
-        self.DeleteWorkflow4.setMinimumSize(QSize(50, 50))
-        self.DeleteWorkflow4.setMaximumSize(QSize(50, 50))
-        self.DeleteWorkflow4.setIcon(icon5)
-        self.DeleteWorkflow4.setIconSize(QSize(50, 50))
+        sizePolicy1.setHeightForWidth(self.DeleteWorkflow4.sizePolicy().hasHeightForWidth())
+        self.DeleteWorkflow4.setSizePolicy(sizePolicy1)
+        self.DeleteWorkflow4.setMinimumSize(QSize(40, 40))
+        self.DeleteWorkflow4.setMaximumSize(QSize(40, 40))
+        self.DeleteWorkflow4.setIcon(icon6)
+        self.DeleteWorkflow4.setIconSize(QSize(40, 40))
         self.DeleteWorkflow4.setFlat(True)
 
-        self.gridLayout_16.addWidget(self.DeleteWorkflow4, 0, 3, 1, 1)
+        self.horizontalLayout.addWidget(self.DeleteWorkflow4)
 
 
         self.gridLayout_6.addWidget(self.Workflow4, 3, 0, 1, 1)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.Workflow1 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow1.setObjectName(u"Workflow1")
+        self.Workflow1.setMinimumSize(QSize(0, 75))
+        self.Workflow1.setMaximumSize(QSize(16777215, 75))
+        self.Workflow1.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow1.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow1.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_14 = QGridLayout(self.Workflow1)
+        self.gridLayout_14.setObjectName(u"gridLayout_14")
+        self.horizontalSpacer_8 = QSpacerItem(379, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.gridLayout_6.addItem(self.verticalSpacer_3, 5, 0, 1, 1)
+        self.gridLayout_14.addItem(self.horizontalSpacer_8, 0, 2, 1, 1)
+
+        self.Workflow1Name = QLabel(self.Workflow1)
+        self.Workflow1Name.setObjectName(u"Workflow1Name")
+
+        self.gridLayout_14.addWidget(self.Workflow1Name, 0, 1, 1, 1)
+
+        self.RenameWorkflow1 = QPushButton(self.Workflow1)
+        self.RenameWorkflow1.setObjectName(u"RenameWorkflow1")
+        self.RenameWorkflow1.setMinimumSize(QSize(30, 30))
+        self.RenameWorkflow1.setMaximumSize(QSize(30, 30))
+        self.RenameWorkflow1.setIcon(icon4)
+        self.RenameWorkflow1.setIconSize(QSize(20, 20))
+        self.RenameWorkflow1.setFlat(True)
+
+        self.gridLayout_14.addWidget(self.RenameWorkflow1, 0, 0, 1, 1)
+
+        self.DeleteWorkflow1 = QPushButton(self.Workflow1)
+        self.DeleteWorkflow1.setObjectName(u"DeleteWorkflow1")
+        sizePolicy1.setHeightForWidth(self.DeleteWorkflow1.sizePolicy().hasHeightForWidth())
+        self.DeleteWorkflow1.setSizePolicy(sizePolicy1)
+        self.DeleteWorkflow1.setMinimumSize(QSize(40, 40))
+        self.DeleteWorkflow1.setMaximumSize(QSize(40, 40))
+        self.DeleteWorkflow1.setIcon(icon6)
+        self.DeleteWorkflow1.setIconSize(QSize(40, 40))
+        self.DeleteWorkflow1.setFlat(True)
+
+        self.gridLayout_14.addWidget(self.DeleteWorkflow1, 0, 4, 1, 1)
+
+        self.StartWorkflow1 = QPushButton(self.Workflow1)
+        self.StartWorkflow1.setObjectName(u"StartWorkflow1")
+        sizePolicy1.setHeightForWidth(self.StartWorkflow1.sizePolicy().hasHeightForWidth())
+        self.StartWorkflow1.setSizePolicy(sizePolicy1)
+        self.StartWorkflow1.setMinimumSize(QSize(40, 40))
+        self.StartWorkflow1.setMaximumSize(QSize(40, 40))
+        self.StartWorkflow1.setIcon(icon5)
+        self.StartWorkflow1.setIconSize(QSize(40, 40))
+        self.StartWorkflow1.setFlat(True)
+
+        self.gridLayout_14.addWidget(self.StartWorkflow1, 0, 3, 1, 1)
+
+
+        self.gridLayout_6.addWidget(self.Workflow1, 0, 0, 1, 1)
+
+        self.Workflow3 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow3.setObjectName(u"Workflow3")
+        self.Workflow3.setMinimumSize(QSize(0, 75))
+        self.Workflow3.setMaximumSize(QSize(16777215, 75))
+        self.Workflow3.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow3.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.Workflow3)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.RenameWorkflow3 = QPushButton(self.Workflow3)
+        self.RenameWorkflow3.setObjectName(u"RenameWorkflow3")
+        self.RenameWorkflow3.setMinimumSize(QSize(30, 30))
+        self.RenameWorkflow3.setMaximumSize(QSize(30, 30))
+        self.RenameWorkflow3.setIcon(icon4)
+        self.RenameWorkflow3.setIconSize(QSize(20, 20))
+        self.RenameWorkflow3.setFlat(True)
+
+        self.horizontalLayout_2.addWidget(self.RenameWorkflow3)
+
+        self.Workflow3Name = QLabel(self.Workflow3)
+        self.Workflow3Name.setObjectName(u"Workflow3Name")
+
+        self.horizontalLayout_2.addWidget(self.Workflow3Name)
+
+        self.horizontalSpacer_13 = QSpacerItem(309, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_13)
+
+        self.StartWorkflow3 = QPushButton(self.Workflow3)
+        self.StartWorkflow3.setObjectName(u"StartWorkflow3")
+        sizePolicy1.setHeightForWidth(self.StartWorkflow3.sizePolicy().hasHeightForWidth())
+        self.StartWorkflow3.setSizePolicy(sizePolicy1)
+        self.StartWorkflow3.setMinimumSize(QSize(40, 40))
+        self.StartWorkflow3.setMaximumSize(QSize(40, 40))
+        self.StartWorkflow3.setIcon(icon5)
+        self.StartWorkflow3.setIconSize(QSize(40, 40))
+        self.StartWorkflow3.setFlat(True)
+
+        self.horizontalLayout_2.addWidget(self.StartWorkflow3)
+
+        self.DeleteWorkflow3 = QPushButton(self.Workflow3)
+        self.DeleteWorkflow3.setObjectName(u"DeleteWorkflow3")
+        sizePolicy1.setHeightForWidth(self.DeleteWorkflow3.sizePolicy().hasHeightForWidth())
+        self.DeleteWorkflow3.setSizePolicy(sizePolicy1)
+        self.DeleteWorkflow3.setMinimumSize(QSize(40, 40))
+        self.DeleteWorkflow3.setMaximumSize(QSize(40, 40))
+        self.DeleteWorkflow3.setIcon(icon6)
+        self.DeleteWorkflow3.setIconSize(QSize(40, 40))
+        self.DeleteWorkflow3.setFlat(True)
+
+        self.horizontalLayout_2.addWidget(self.DeleteWorkflow3)
+
+
+        self.gridLayout_6.addWidget(self.Workflow3, 2, 0, 1, 1)
+
+        self.Workflow2 = QFrame(self.scrollAreaWidgetContents)
+        self.Workflow2.setObjectName(u"Workflow2")
+        self.Workflow2.setMinimumSize(QSize(0, 75))
+        self.Workflow2.setMaximumSize(QSize(16777215, 75))
+        self.Workflow2.setStyleSheet(u"QFrame { border: none; }")
+        self.Workflow2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.Workflow2.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_3 = QHBoxLayout(self.Workflow2)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.RenameWorkflow2 = QPushButton(self.Workflow2)
+        self.RenameWorkflow2.setObjectName(u"RenameWorkflow2")
+        self.RenameWorkflow2.setMinimumSize(QSize(30, 30))
+        self.RenameWorkflow2.setMaximumSize(QSize(30, 30))
+        self.RenameWorkflow2.setIcon(icon4)
+        self.RenameWorkflow2.setIconSize(QSize(20, 20))
+        self.RenameWorkflow2.setFlat(True)
+
+        self.horizontalLayout_3.addWidget(self.RenameWorkflow2)
+
+        self.Workflow2Name = QLabel(self.Workflow2)
+        self.Workflow2Name.setObjectName(u"Workflow2Name")
+
+        self.horizontalLayout_3.addWidget(self.Workflow2Name)
+
+        self.horizontalSpacer_12 = QSpacerItem(309, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_3.addItem(self.horizontalSpacer_12)
+
+        self.StartWorkflow2 = QPushButton(self.Workflow2)
+        self.StartWorkflow2.setObjectName(u"StartWorkflow2")
+        sizePolicy1.setHeightForWidth(self.StartWorkflow2.sizePolicy().hasHeightForWidth())
+        self.StartWorkflow2.setSizePolicy(sizePolicy1)
+        self.StartWorkflow2.setMinimumSize(QSize(40, 40))
+        self.StartWorkflow2.setMaximumSize(QSize(40, 40))
+        self.StartWorkflow2.setIcon(icon5)
+        self.StartWorkflow2.setIconSize(QSize(40, 40))
+        self.StartWorkflow2.setFlat(True)
+
+        self.horizontalLayout_3.addWidget(self.StartWorkflow2)
+
+        self.DeleteWorkflow2 = QPushButton(self.Workflow2)
+        self.DeleteWorkflow2.setObjectName(u"DeleteWorkflow2")
+        sizePolicy1.setHeightForWidth(self.DeleteWorkflow2.sizePolicy().hasHeightForWidth())
+        self.DeleteWorkflow2.setSizePolicy(sizePolicy1)
+        self.DeleteWorkflow2.setMinimumSize(QSize(40, 40))
+        self.DeleteWorkflow2.setMaximumSize(QSize(40, 40))
+        self.DeleteWorkflow2.setIcon(icon6)
+        self.DeleteWorkflow2.setIconSize(QSize(40, 40))
+        self.DeleteWorkflow2.setFlat(True)
+
+        self.horizontalLayout_3.addWidget(self.DeleteWorkflow2)
+
+
+        self.gridLayout_6.addWidget(self.Workflow2, 1, 0, 1, 1)
 
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
@@ -403,19 +487,88 @@ class Ui_MainWindow(object):
         self.pushButton = QPushButton(self.Workflows)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setMinimumSize(QSize(0, 50))
+        font = QFont()
+        font.setPointSize(11)
+        self.pushButton.setFont(font)
 
         self.gridLayout_8.addWidget(self.pushButton, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.Workflows)
         self.Tools = QWidget()
         self.Tools.setObjectName(u"Tools")
-        self.formLayout = QFormLayout(self.Tools)
-        self.formLayout.setObjectName(u"formLayout")
-        self.label_13 = QLabel(self.Tools)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setWordWrap(True)
+        self.gridLayout_4 = QGridLayout(self.Tools)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.label_4 = QLabel(self.Tools)
+        self.label_4.setObjectName(u"label_4")
 
-        self.formLayout.setWidget(0, QFormLayout.SpanningRole, self.label_13)
+        self.gridLayout_4.addWidget(self.label_4, 0, 0, 1, 2)
+
+        self.scrollArea_2 = QScrollArea(self.Tools)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        self.scrollArea_2.setStyleSheet(u"")
+        self.scrollArea_2.setFrameShape(QFrame.Shape.NoFrame)
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_2 = QWidget()
+        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 617, 440))
+        self.gridLayout_15 = QGridLayout(self.scrollAreaWidgetContents_2)
+        self.gridLayout_15.setObjectName(u"gridLayout_15")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_15.addItem(self.horizontalSpacer_2, 0, 1, 1, 1)
+
+        self.frame = QFrame(self.scrollAreaWidgetContents_2)
+        self.frame.setObjectName(u"frame")
+        sizePolicy2.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
+        self.frame.setSizePolicy(sizePolicy2)
+        self.frame.setMinimumSize(QSize(0, 300))
+        self.frame.setMaximumSize(QSize(16777215, 16777215))
+        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_9 = QGridLayout(self.frame)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_6, 3, 0, 1, 1)
+
+        self.ToolDesc = QLabel(self.frame)
+        self.ToolDesc.setObjectName(u"ToolDesc")
+        self.ToolDesc.setStyleSheet(u"")
+        self.ToolDesc.setWordWrap(True)
+
+        self.gridLayout_9.addWidget(self.ToolDesc, 1, 0, 1, 1)
+
+        self.ToolTitle = QLabel(self.frame)
+        self.ToolTitle.setObjectName(u"ToolTitle")
+
+        self.gridLayout_9.addWidget(self.ToolTitle, 0, 0, 1, 1)
+
+        self.OpenTool = QPushButton(self.frame)
+        self.OpenTool.setObjectName(u"OpenTool")
+        self.OpenTool.setMinimumSize(QSize(0, 50))
+        font1 = QFont()
+        font1.setPointSize(10)
+        font1.setBold(True)
+        self.OpenTool.setFont(font1)
+
+        self.gridLayout_9.addWidget(self.OpenTool, 4, 0, 1, 1)
+
+        self.ToolInstructions = QLabel(self.frame)
+        self.ToolInstructions.setObjectName(u"ToolInstructions")
+        self.ToolInstructions.setWordWrap(True)
+
+        self.gridLayout_9.addWidget(self.ToolInstructions, 2, 0, 1, 1)
+
+
+        self.gridLayout_15.addWidget(self.frame, 0, 0, 1, 1)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_15.addItem(self.verticalSpacer_4, 1, 0, 1, 1)
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+        self.gridLayout_4.addWidget(self.scrollArea_2, 1, 1, 1, 1)
 
         self.stackedWidget.addWidget(self.Tools)
         self.Settings = QWidget()
@@ -433,7 +586,7 @@ class Ui_MainWindow(object):
 
         self.stackedWidget.addWidget(self.Settings)
 
-        self.gridLayout_4.addWidget(self.stackedWidget, 0, 0, 1, 1)
+        self.formLayout_2.setWidget(0, QFormLayout.SpanningRole, self.stackedWidget)
 
 
         self.gridLayout.addWidget(self.Pages, 1, 1, 1, 1)
@@ -468,10 +621,10 @@ class Ui_MainWindow(object):
         self.MenuButton.setMinimumSize(QSize(50, 50))
         self.MenuButton.setMaximumSize(QSize(50, 50))
         self.MenuButton.setContextMenuPolicy(Qt.ContextMenuPolicy.NoContextMenu)
-        icon6 = QIcon()
-        icon6.addFile(u":/Icons/menu_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
-        self.MenuButton.setIcon(icon6)
-        self.MenuButton.setIconSize(QSize(50, 50))
+        icon7 = QIcon()
+        icon7.addFile(u":/Icons/menu_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.MenuButton.setIcon(icon7)
+        self.MenuButton.setIconSize(QSize(40, 40))
         self.MenuButton.setFlat(True)
 
         self.gridLayout_3.addWidget(self.MenuButton, 0, 0, 1, 1)
@@ -487,7 +640,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -500,26 +653,83 @@ class Ui_MainWindow(object):
         self.SettingsButton.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.HomepageButton.setText(QCoreApplication.translate("MainWindow", u"Homepage", None))
         self.ToolsButton.setText(QCoreApplication.translate("MainWindow", u"Tools", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"This is the draft of an app meant to automate certain tasks. It is going to be made for Daniel Emmer's Personal Project. ", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">What is this?</span></p></body></html>", None))
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Workflow 3", None))
-        self.StartWorkflow3.setText("")
-        self.DeleteWorkflow3.setText("")
-        self.StartWorkflow1.setText("")
-        self.DeleteWorkflow1.setText("")
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Workflow 1", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Workflow 2", None))
-        self.StartWorkflow2.setText("")
-        self.DeleteWorkflow2.setText("")
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Workflow 5", None))
-        self.DeleteWorkflow5.setText("")
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><ul style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1; font-size:12pt;\"><li>Firstly, the user selects a trigger, of which there are currently two. This will determine how the workflow starts.</li><li>Secondly, the user selects functions, of which there are a variety of. Some, such as \"New Tab\", require the user to be on a browser engine when the workflow is begun or to have opened the browser in one of the previous functions. These functions can be combined to create a workflow.</li><li>Then, the user can begin to use their workflow by pressing the green button next to a workflow.</li><li>After doing this, they can run their workflow by activating the chosen trigger.</li></ul></body></head></html>", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:700;\">How does it work?</span></p></body></html>", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:700;\">What is this?</span></p></body></html>", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">This is a tool that allows people to automate many mundane tasks. One example of this is setting up your device to get ready for work/school/another occasion. This program can help with that by opening many tabs and desktops for you with the press of a button.</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.RenameWorkflow5.setToolTip(QCoreApplication.translate("MainWindow", u"Rename Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.RenameWorkflow5.setText("")
+        self.Workflow5Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">Workflow 5</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.StartWorkflow5.setToolTip(QCoreApplication.translate("MainWindow", u"Run Workflow", None))
+#endif // QT_CONFIG(tooltip)
         self.StartWorkflow5.setText("")
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Workflow 4", None))
+#if QT_CONFIG(tooltip)
+        self.DeleteWorkflow5.setToolTip(QCoreApplication.translate("MainWindow", u"Delete Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.DeleteWorkflow5.setText("")
+#if QT_CONFIG(tooltip)
+        self.RenameWorkflow4.setToolTip(QCoreApplication.translate("MainWindow", u"Rename Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.RenameWorkflow4.setText("")
+        self.Workflow4Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">Workflow 4</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.StartWorkflow4.setToolTip(QCoreApplication.translate("MainWindow", u"Run Workflow", None))
+#endif // QT_CONFIG(tooltip)
         self.StartWorkflow4.setText("")
+#if QT_CONFIG(tooltip)
+        self.DeleteWorkflow4.setToolTip(QCoreApplication.translate("MainWindow", u"Delete Workflow", None))
+#endif // QT_CONFIG(tooltip)
         self.DeleteWorkflow4.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Current Workflows</span></p></body></html>", None))
+        self.Workflow1Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">Workflow 1</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.RenameWorkflow1.setToolTip(QCoreApplication.translate("MainWindow", u"Rename Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.RenameWorkflow1.setText("")
+#if QT_CONFIG(tooltip)
+        self.DeleteWorkflow1.setToolTip(QCoreApplication.translate("MainWindow", u"Delete Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.DeleteWorkflow1.setText("")
+#if QT_CONFIG(tooltip)
+        self.StartWorkflow1.setToolTip(QCoreApplication.translate("MainWindow", u"Run Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.StartWorkflow1.setText("")
+#if QT_CONFIG(tooltip)
+        self.RenameWorkflow3.setToolTip(QCoreApplication.translate("MainWindow", u"Rename Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.RenameWorkflow3.setText("")
+        self.Workflow3Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">Workflow 3</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.StartWorkflow3.setToolTip(QCoreApplication.translate("MainWindow", u"Run Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.StartWorkflow3.setText("")
+#if QT_CONFIG(tooltip)
+        self.DeleteWorkflow3.setToolTip(QCoreApplication.translate("MainWindow", u"Delete Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.DeleteWorkflow3.setText("")
+#if QT_CONFIG(tooltip)
+        self.RenameWorkflow2.setToolTip(QCoreApplication.translate("MainWindow", u"Rename Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.RenameWorkflow2.setText("")
+        self.Workflow2Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt;\">Workflow 2</span></p></body></html>", None))
+#if QT_CONFIG(tooltip)
+        self.StartWorkflow2.setToolTip(QCoreApplication.translate("MainWindow", u"Run Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.StartWorkflow2.setText("")
+#if QT_CONFIG(tooltip)
+        self.DeleteWorkflow2.setToolTip(QCoreApplication.translate("MainWindow", u"Delete Workflow", None))
+#endif // QT_CONFIG(tooltip)
+        self.DeleteWorkflow2.setText("")
+        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:22pt; font-weight:700;\">Current Workflows</span></p></body></html>", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Open Workflow Creator", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"This part is an extra part of the app, if I finish and still want to keep going to improve the user experience of the app, etc. I will only need to do this after I finish all of the other parts of my app.", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:700;\">Tools</span></p></body></html>", None))
+        self.ToolDesc.setText(QCoreApplication.translate("MainWindow", u"Gives the X-Y coordinates of the location of the user's mouse ", None))
+        self.ToolTitle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">X-Y Coordinate Finder</span></p></body></html>", None))
+        self.OpenTool.setText(QCoreApplication.translate("MainWindow", u"Open Tool", None))
+        self.ToolInstructions.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:700;\">How to use:</span></p><ol style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Move your mouse to the location you want to find the X-Y coordinates of </li><li style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Press the ` key (Right below the esc key at the top left) </li><li style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Copy the X and Y coordinates from the tool </li><li style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Paste the X-coordinate into the X-coordinate section </li><li style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                        "text-indent:0px;\">Paste the Y-Coordinate into the Y-Coordinate section </li></ol></body></html>", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700;\">Compact Mode</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt; font-weight:700;\">Page Name</span></p></body></html>", None))
         self.MenuButton.setText("")
