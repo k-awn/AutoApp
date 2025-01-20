@@ -16,16 +16,10 @@ from toggle import CustomToggle
 from os.path import isfile
 from os import remove
 import threading
-<<<<<<< HEAD:Final-Product/UIMain.py
 import json
 import os
 from os import path
 import Icons_rc 
-=======
-import time
-import json
-from os import path
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/UIMain.py
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -504,7 +498,6 @@ class Ui_MainWindow(object):
         self.Tools.setObjectName(u"Tools")
         self.gridLayout_4 = QGridLayout(self.Tools)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-<<<<<<< HEAD:Final-Product/UIMain.py
         self.scrollArea_2 = QScrollArea(self.Tools)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
         self.scrollArea_2.setStyleSheet(u"")
@@ -527,35 +520,6 @@ class Ui_MainWindow(object):
         self.gridLayout_9.setObjectName(u"gridLayout_9")
         self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-=======
-        self.label_4 = QLabel(self.Tools)
-        self.label_4.setObjectName(u"label_4")
-
-        self.gridLayout_4.addWidget(self.label_4, 0, 0, 1, 2)
-
-        self.scrollArea_2 = QScrollArea(self.Tools)
-        self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setStyleSheet(u"")
-        self.scrollArea_2.setFrameShape(QFrame.Shape.NoFrame)
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollAreaWidgetContents_2 = QWidget()
-        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 617, 440))
-        self.gridLayout_15 = QGridLayout(self.scrollAreaWidgetContents_2)
-        self.gridLayout_15.setObjectName(u"gridLayout_15")
-        self.frame = QFrame(self.scrollAreaWidgetContents_2)
-        self.frame.setObjectName(u"frame")
-        sizePolicy2.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
-        self.frame.setSizePolicy(sizePolicy2)
-        self.frame.setMinimumSize(QSize(0, 300))
-        self.frame.setMaximumSize(QSize(16777215, 16777215))
-        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Shadow.Raised)
-        self.gridLayout_9 = QGridLayout(self.frame)
-        self.gridLayout_9.setObjectName(u"gridLayout_9")
-        self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/UIMain.py
         self.gridLayout_9.addItem(self.verticalSpacer_6, 3, 0, 1, 1)
 
         self.ToolDesc = QLabel(self.frame)
@@ -744,7 +708,6 @@ class Ui_MainWindow(object):
                 self.HomepageButton.setStyleSheet('QPushButton{text-align: left;}')
                 self.SettingsButton.setStyleSheet('QPushButton{text-align: left;}')
         self.customToggle.stateChanged.connect(compactMode)    
-<<<<<<< HEAD:Final-Product/UIMain.py
         abspath = os.path.dirname(os.path.abspath(__file__))
         workflowNameTablePath = os.path.join(abspath, 'Files/Settings/workflowNameTable.json')
         DataTable = open(workflowNameTablePath, 'r')
@@ -754,16 +717,6 @@ class Ui_MainWindow(object):
         self.Workflow3Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">" + data['Workflow3Name'] + "</span></p></body></html>", None))
         self.Workflow4Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">" + data['Workflow4Name'] + "</span></p></body></html>", None))
         self.Workflow5Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">" + data['Workflow5Name'] + "</span></p></body></html>", None))
-=======
-        DataTable = open(r'Product-Draft/Files/Settings/WorkflowNameTable.json', 'r')
-        data = json.load(DataTable)
-        print(data['Workflow1Name'])
-        self.Workflow1Name.setText(QCoreApplication.translate("MainWindow", f"<html><head/><body><p><span style=\" font-size:11pt;\">{data['Workflow1Name']}</span></p></body></html>", None))
-        self.Workflow2Name.setText(QCoreApplication.translate("MainWindow", f"<html><head/><body><p><span style=\" font-size:11pt;\">{data['Workflow2Name']}</span></p></body></html>", None))
-        self.Workflow3Name.setText(QCoreApplication.translate("MainWindow", f"<html><head/><body><p><span style=\" font-size:11pt;\">{data['Workflow3Name']}</span></p></body></html>", None))
-        self.Workflow4Name.setText(QCoreApplication.translate("MainWindow", f"<html><head/><body><p><span style=\" font-size:11pt;\">{data['Workflow4Name']}</span></p></body></html>", None))
-        self.Workflow5Name.setText(QCoreApplication.translate("MainWindow", f"<html><head/><body><p><span style=\" font-size:11pt;\">{data['Workflow5Name']}</span></p></body></html>", None))
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/UIMain.py
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -844,14 +797,8 @@ class Ui_MainWindow(object):
         self.DeleteWorkflow2.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:22pt; font-weight:700;\">Current Workflows</span></p></body></html>", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Open Workflow Creator", None))
-<<<<<<< HEAD:Final-Product/UIMain.py
         self.ToolDesc.setText(QCoreApplication.translate("MainWindow", u"Gives the X-Y coordinates of the location of the user's mouse ", None))
         self.ToolTitle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">X-Y Coordinate Picker</span></p></body></html>", None))
-=======
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; font-weight:700;\">Tools</span></p></body></html>", None))
-        self.ToolDesc.setText(QCoreApplication.translate("MainWindow", u"Gives the X-Y coordinates of the location of the user's mouse ", None))
-        self.ToolTitle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">X-Y Coordinate Finder</span></p></body></html>", None))
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/UIMain.py
         self.OpenTool.setText(QCoreApplication.translate("MainWindow", u"Open Tool", None))
         self.ToolInstructions.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:700;\">How to use:</span></p><ol style=\"margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;\"><li style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Move your mouse to the location you want to find the X-Y coordinates of </li><li style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Press the ` key (Right below the esc key at the top left) </li><li style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Copy the X and Y coordinates from the tool </li><li style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Paste the X-coordinate into the X-coordinate section </li><li style=\" margin-top:0px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
                         "text-indent:0px;\">Paste the Y-Coordinate into the Y-Coordinate section </li></ol></body></html>", None))
