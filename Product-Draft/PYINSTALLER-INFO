@@ -1,1 +1,0 @@
-pyinstaller Product-Draft\main.py --noconsole --icon Product-Draft\AppLogo.ico --contents-directory . --onefile

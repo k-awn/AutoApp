@@ -6,37 +6,48 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>665</width>
-    <height>630</height>
+    <width>750</width>
+    <height>750</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>750</width>
+    <height>750</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="9" column="0">
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Orientation::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
+    <property name="leftMargin">
+     <number>9</number>
+    </property>
+    <property name="verticalSpacing">
+     <number>0</number>
+    </property>
+    <item row="4" column="0" colspan="2">
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="minimumSize">
        <size>
-        <width>20</width>
-        <height>40</height>
+        <width>500</width>
+        <height>250</height>
        </size>
       </property>
+<<<<<<< HEAD
+      <property name="styleSheet">
+       <string notr="true">background-color:#302c2c;
+border-radius:10px;</string>
+=======
      </spacer>
     </item>
     <item row="0" column="0" colspan="2">
      <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:700;&quot;&gt;Workflow Creator&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt; font-weight:700;&quot;&gt;Workflow Creator&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
       </property>
-     </widget>
-    </item>
-    <item row="3" column="0" colspan="2">
-     <widget class="QScrollArea" name="scrollArea">
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -45,8 +56,13 @@
         <rect>
          <x>0</x>
          <y>0</y>
+<<<<<<< HEAD
+         <width>732</width>
+         <height>263</height>
+=======
          <width>645</width>
-         <height>134</height>
+         <height>125</height>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -71,68 +87,49 @@
       </widget>
      </widget>
     </item>
-    <item row="5" column="0" colspan="2">
-     <widget class="QLabel" name="compileResult">
+    <item row="3" column="0" colspan="2">
+     <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">padding:5px;</string>
+      </property>
       <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:700;&quot;&gt;Workflow Steps&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-    </item>
-    <item row="9" column="1">
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Orientation::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
     </item>
     <item row="2" column="0" colspan="2">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:700;&quot;&gt;Item List&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="QPushButton" name="CompileButton">
-      <property name="text">
-       <string>Compile Code</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="2">
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="minimumSize">
+       <size>
+        <width>500</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
         <width>16777215</width>
-        <height>200</height>
+        <height>350</height>
        </size>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:#302c2c</string>
       </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
       <widget class="QWidget" name="page_2">
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="1" column="0">
-         <widget class="QLabel" name="label">
+        <item row="0" column="0" colspan="5">
+         <widget class="QLabel" name="label_9">
           <property name="text">
-           <string>Trigger Selected:</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Create Trigger&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="0" colspan="2">
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Add Trigger</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
+        <item row="1" column="4">
          <widget class="QComboBox" name="triggerDropDown">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -142,12 +139,17 @@
           </property>
           <item>
            <property name="text">
+            <string>Instantly run</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Hotkey</string>
            </property>
           </item>
          </widget>
         </item>
-        <item row="4" column="0" colspan="2">
+        <item row="4" column="0" colspan="5">
          <widget class="QStackedWidget" name="trigSettings">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
@@ -158,37 +160,82 @@
           <property name="minimumSize">
            <size>
             <width>200</width>
-            <height>50</height>
+<<<<<<< HEAD
+            <height>125</height>
+=======
+            <height>75</height>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>50</height>
+<<<<<<< HEAD
+            <height>200</height>
+=======
+            <height>100</height>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
            </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
           </property>
           <property name="currentIndex">
            <number>0</number>
           </property>
+          <widget class="QWidget" name="instantRunSettings">
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_24">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;This trigger has no settings.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_25">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Simply press the &amp;quot;Add Trigger&amp;quot; button to add it to your Workflow!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+<<<<<<< HEAD
+            <item row="2" column="0">
+             <spacer name="verticalSpacer_16">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+=======
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
+           </layout>
+          </widget>
           <widget class="QWidget" name="hotkeySettings">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
-             <height>50</height>
+             <height>150</height>
             </size>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
             <property name="topMargin">
              <number>9</number>
             </property>
-            <item row="0" column="0">
+            <item row="1" column="0">
              <widget class="QLabel" name="label_5">
               <property name="text">
                <string>Hotkey</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
+            <item row="1" column="2">
              <widget class="QLineEdit" name="lineEdit">
               <property name="styleSheet">
                <string notr="true">background:transparent; border:none;</string>
@@ -201,41 +248,143 @@
               </property>
              </widget>
             </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="intervalSettings">
-           <layout class="QGridLayout" name="gridLayout_4">
-            <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignTop">
-             <widget class="QLabel" name="label_6">
-              <property name="text">
-               <string>Interval:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1" alignment="Qt::AlignmentFlag::AlignTop">
-             <widget class="QTextEdit" name="textEdit_2">
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>25</height>
-               </size>
-              </property>
+<<<<<<< HEAD
+            <item row="3" column="2">
+             <widget class="QLineEdit" name="lineEdit_4">
               <property name="styleSheet">
-               <string notr="true">border:none; background:transparent</string>
+               <string notr="true">background:transparent; border:none;</string>
               </property>
               <property name="placeholderText">
-               <string>Write your interval here</string>
+               <string>The third hotkey to start the workflow</string>
               </property>
              </widget>
             </item>
+            <item row="0" column="1" colspan="2">
+             <widget class="QComboBox" name="comboBox">
+              <property name="styleSheet">
+               <string notr="true">b</string>
+              </property>
+              <property name="placeholderText">
+               <string>Amount of keys to press to trigger the workflow</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>One Key</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Two Keys</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Three Keys</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_13">
+              <property name="text">
+               <string>Amount of Keys</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_26">
+              <property name="text">
+               <string>Third Hotkey</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>Second Hotkey</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QLineEdit" name="lineEdit_3">
+              <property name="styleSheet">
+               <string notr="true">background:transparent; border:none;</string>
+              </property>
+              <property name="placeholderText">
+               <string>The second hotkey to start the workflow</string>
+              </property>
+             </widget>
+            </item>
+=======
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
            </layout>
           </widget>
          </widget>
         </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label_9">
+        <item row="5" column="0">
+         <widget class="QPushButton" name="infoButtonTrig">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Create Trigger&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../assets/Icons.qrc">
+            <normaloff>:/Icons/question_mark_24dp_FFFFF0_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/Icons/question_mark_24dp_FFFFF0_FILL0_wght400_GRAD0_opsz24.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Trigger Selected:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1" colspan="4">
+         <widget class="QLabel" name="InfoTrig">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="5">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Add Trigger</string>
           </property>
          </widget>
         </item>
@@ -243,6 +392,33 @@
       </widget>
       <widget class="QWidget" name="page_3">
        <layout class="QGridLayout" name="gridLayout_10">
+<<<<<<< HEAD
+        <item row="0" column="0" colspan="3">
+=======
+        <item row="2" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignTop">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Add Function</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Function Selected:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Create Function&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+<<<<<<< HEAD
+=======
+         </widget>
+        </item>
         <item row="1" column="1" alignment="Qt::AlignmentFlag::AlignVCenter">
          <widget class="QComboBox" name="functionDropDown">
           <property name="sizePolicy">
@@ -276,23 +452,101 @@
             <string>Wait</string>
            </property>
           </item>
+          <item>
+           <property name="text">
+            <string>Keypress</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Keypress Combination</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Click on Image</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>New Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Close Current Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Next Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Previous Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>New Tab</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Close Current Tab</string>
+           </property>
+          </item>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
          </widget>
         </item>
-        <item row="2" column="0" colspan="2" alignment="Qt::AlignmentFlag::AlignTop">
+        <item row="3" column="0" colspan="3" alignment="Qt::AlignmentFlag::AlignTop">
          <widget class="QPushButton" name="pushButton_2">
           <property name="text">
            <string>Add Function</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="0" colspan="2">
-         <widget class="QLabel" name="label_10">
+        <item row="5" column="0">
+         <widget class="QPushButton" name="infoButtonFunc">
+          <property name="minimumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:700;&quot;&gt;Create Function&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../assets/Icons.qrc">
+            <normaloff>:/Icons/question_mark_24dp_FFFFF0_FILL0_wght400_GRAD0_opsz24.png</normaloff>:/Icons/question_mark_24dp_FFFFF0_FILL0_wght400_GRAD0_opsz24.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>50</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
-        <item row="3" column="0" colspan="2">
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Function Selected:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0" colspan="3">
          <widget class="QStackedWidget" name="funcSettings">
           <property name="minimumSize">
            <size>
@@ -311,14 +565,14 @@
           </property>
           <widget class="QWidget" name="openBrowserSettings">
            <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignVCenter">
+            <item row="1" column="0" alignment="Qt::AlignmentFlag::AlignVCenter">
              <widget class="QLabel" name="label_7">
               <property name="text">
                <string>Browser URL</string>
               </property>
              </widget>
             </item>
-            <item row="0" column="1">
+            <item row="1" column="2">
              <widget class="QPlainTextEdit" name="URLInput">
               <property name="maximumSize">
                <size>
@@ -343,20 +597,7 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <spacer name="verticalSpacer_6">
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="1" column="1">
+            <item row="2" column="2">
              <spacer name="verticalSpacer_8">
               <property name="orientation">
                <enum>Qt::Orientation::Vertical</enum>
@@ -413,6 +654,9 @@
                 <width>16777215</width>
                 <height>25</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border:none; background:transparent;</string>
               </property>
               <property name="placeholderText">
                <string>The XPath of the button you want to click on (Found in Inspect Element)</string>
@@ -560,7 +804,7 @@
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="page">
+          <widget class="QWidget" name="waitSettings">
            <layout class="QGridLayout" name="gridLayout_9">
             <item row="0" column="0">
              <widget class="QLabel" name="label_8">
@@ -600,22 +844,558 @@
             </item>
            </layout>
           </widget>
+          <widget class="QWidget" name="pressKeySettings">
+           <layout class="QGridLayout" name="gridLayout_11">
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="keyInput">
+              <property name="styleSheet">
+               <string notr="true">background:transparent; border:none;</string>
+              </property>
+              <property name="maxLength">
+               <number>1</number>
+              </property>
+              <property name="placeholderText">
+               <string>The key to press</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="keyLabel">
+              <property name="text">
+               <string>Key</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <spacer name="verticalSpacer_13">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="keypressCombinationSettings">
+           <layout class="QGridLayout" name="gridLayout_15">
+<<<<<<< HEAD
+            <item row="1" column="0">
+             <widget class="QLabel" name="keyLabel_4">
+              <property name="text">
+               <string>Key Two</string>
+              </property>
+             </widget>
+            </item>
+=======
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
+            <item row="0" column="0">
+             <widget class="QLabel" name="keyLabel_3">
+              <property name="text">
+               <string>Key One</string>
+              </property>
+             </widget>
+            </item>
+<<<<<<< HEAD
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="keyInput_3">
+              <property name="styleSheet">
+               <string notr="true">background:transparent; border:none;</string>
+              </property>
+              <property name="maxLength">
+               <number>15</number>
+              </property>
+              <property name="placeholderText">
+               <string>The second key in the combination</string>
+              </property>
+             </widget>
+            </item>
+=======
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="keyInput_2">
+              <property name="styleSheet">
+               <string notr="true">background:transparent; border:none;</string>
+              </property>
+              <property name="maxLength">
+               <number>15</number>
+              </property>
+              <property name="placeholderText">
+<<<<<<< HEAD
+               <string>The first key in the combination</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="2">
+             <spacer name="verticalSpacer_15">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+=======
+               <string>The first key to press</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="keyLabel_4">
+              <property name="text">
+               <string>Key Two</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="keyInput_3">
+              <property name="styleSheet">
+               <string notr="true">background:transparent; border:none;</string>
+              </property>
+              <property name="maxLength">
+               <number>15</number>
+              </property>
+              <property name="placeholderText">
+               <string>The second key to press</string>
+              </property>
+             </widget>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="clickImagesettings">
+           <layout class="QGridLayout" name="gridLayout_12">
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="lineEdit_2">
+              <property name="styleSheet">
+               <string notr="true">background:transparent; border:none;</string>
+              </property>
+              <property name="maxLength">
+               <number>2</number>
+              </property>
+              <property name="placeholderText">
+<<<<<<< HEAD
+               <string>How sure the program should be (integer between 1 and 100) that the image is the one provided</string>
+=======
+               <string>How sure the program should be (decimal between 0 and 1) that the image is the one provided</string>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="keyLabel_2">
+              <property name="text">
+               <string>Image Filepath</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>Accuracy</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="newWindow">
+           <layout class="QGridLayout" name="gridLayout_14">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;This function has no settings.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_15">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Simply press the &amp;quot;Add Function&amp;quot; button to add it to your Workflow!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="closeWindow">
+           <layout class="QGridLayout" name="gridLayout_16">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_16">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;This function has no settings.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_17">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Simply press the &amp;quot;Add Function&amp;quot; button to add it to your Workflow!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="nextWindowSettings">
+           <layout class="QGridLayout" name="gridLayout_19">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_22">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;This function has no settings.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_23">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Simply press the &amp;quot;Add Function&amp;quot; button to add it to your Workflow!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="previousWindowSettings">
+           <layout class="QGridLayout" name="gridLayout_17">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_18">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;This function has no settings.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_19">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Simply press the &amp;quot;Add Function&amp;quot; button to add it to your Workflow!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="newTabSettings">
+           <layout class="QGridLayout" name="gridLayout_13">
+            <item row="0" column="1">
+             <widget class="QPlainTextEdit" name="tabInput">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background:transparent; border:none;</string>
+              </property>
+              <property name="placeholderText">
+               <string>The URL to open the tab to</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLabel" name="tabLabel">
+              <property name="text">
+               <string>Tab URL</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="2">
+             <spacer name="verticalSpacer_12">
+              <property name="orientation">
+               <enum>Qt::Orientation::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="closeTabSettings">
+           <layout class="QGridLayout" name="gridLayout_18">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_20">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:24pt; font-weight:700;&quot;&gt;This function has no settings.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Simply press the &amp;quot;Add Function&amp;quot; button to add it to your Workflow!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+<<<<<<< HEAD
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_4">
-          <property name="text">
-           <string>Function Selected:</string>
+        <item row="5" column="1" colspan="2">
+         <widget class="QLabel" name="infoFunc">
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
           </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QComboBox" name="functionDropDown">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <item>
+           <property name="text">
+            <string>Open Browser </string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Click Button</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Click</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Type</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Wait</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Press Key</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Press Multiple Keys</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Click Image</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>New Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Close Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Next Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Previous Desktop</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>New Tab</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Close Tab</string>
+           </property>
+          </item>
+=======
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
          </widget>
         </item>
        </layout>
       </widget>
      </widget>
     </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QFrame" name="frame">
+      <property name="minimumSize">
+       <size>
+        <width>20</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame { background-color: transparent; border: none; }</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_20" rowstretch="0">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="horizontalSpacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">            QPushButton {
+                background-color: #302c2c;
+                border: none;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 10px;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+                margin: 0px;				
+            }
+            QPushButton:hover {
+                background-color: #908c8c;
+            }
+			QPushButton:pressed {
+				background-color:#302c2c
+}</string>
+         </property>
+         <property name="text">
+          <string>Functions</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">            QPushButton {
+                background-color: #302c2c;
+                color: white;
+                border: none;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+                margin: 0px;
+                padding: 5px;
+            }
+            QPushButton:hover {
+                background-color: #908c8c;
+            }
+			QPushButton:pressed {
+				background-color:#302c2c
+}</string>
+         </property>
+         <property name="text">
+          <string>Triggers</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="label_3">
+      <property name="styleSheet">
+       <string notr="true">padding:5px;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt; font-weight:700;&quot;&gt;Workflow Creator&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="2">
+     <widget class="QPushButton" name="CompileButton">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">padding:15px;</string>
+      </property>
+      <property name="text">
+       <string>Create Workflow</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../assets/Icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
