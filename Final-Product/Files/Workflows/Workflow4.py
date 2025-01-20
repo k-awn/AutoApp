@@ -22,6 +22,10 @@ def response():
 	wait(5)
 	driver.find_element(By.XPATH, "/html/body/div/div/div[2]/div[1]/h4[2]").click()
 
+<<<<<<< HEAD:Final-Product/Files/Workflows/Workflow4.py
+keyboard.add_hotkey("`", response, suppress=True, trigger_on_release=True, timeout=1) 
+=======
 keyboard.add_hotkey("]", response, suppress=True, trigger_on_release=True, timeout=1) 
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:dist/main/Files/Workflows/Workflow4.py
 keyboard.wait("esc")
 _exit(0)

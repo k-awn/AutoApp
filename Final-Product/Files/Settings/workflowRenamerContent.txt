@@ -1,5 +1,9 @@
 <<<<<<< HEAD:Final-Product/Files/Settings/workflowRenamerContent.txt
+<<<<<<< HEAD:Final-Product/Files/Settings/workflowRenamerContent.txt
 Workflow1
+=======
+e
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/Files/Settings/workflowRenamerContent.txt
 =======
 e
 >>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/Files/Settings/workflowRenamerContent.txt

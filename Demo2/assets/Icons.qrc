@@ -1,7 +1,10 @@
 <RCC>
   <qresource prefix="Icons">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <file>question_mark_24dp_FFFFF0_FILL0_wght400_GRAD0_opsz24.png</file>
+=======
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
 =======
 >>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
     <file>copy_icon.png</file>

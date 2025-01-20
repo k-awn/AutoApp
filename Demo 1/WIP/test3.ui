@@ -1259,8 +1259,11 @@
          <widget class="QWidget" name="Tools">
           <layout class="QGridLayout" name="gridLayout_4">
 <<<<<<< HEAD
+<<<<<<< HEAD
            <item row="0" column="0">
 =======
+=======
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
            <item row="0" column="0" colspan="2">
             <widget class="QLabel" name="label_4">
              <property name="text">
@@ -1269,6 +1272,9 @@
             </widget>
            </item>
            <item row="1" column="1">
+<<<<<<< HEAD
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
+=======
 >>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
             <widget class="QScrollArea" name="scrollArea_2">
              <property name="styleSheet">
@@ -1286,8 +1292,13 @@
                 <x>0</x>
                 <y>0</y>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <width>623</width>
                 <height>482</height>
+=======
+                <width>617</width>
+                <height>440</height>
+>>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e
 =======
                 <width>617</width>
                 <height>440</height>
