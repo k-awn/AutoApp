@@ -1,33 +1,9 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'WorkflowRenamerZWwKMW.ui'
-##
-## Created by: Qt User Interface Compiler version 6.7.2
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
-<<<<<<< HEAD:Final-Product/WorkflowRenamer.py
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize)
 from PySide6.QtWidgets import (QGridLayout, QLabel, QLineEdit,
     QPushButton, QSizePolicy, QSpacerItem,
     QWidget)
 from time import sleep as wait
 import os
-=======
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QWidget)
-from time import sleep as wait
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/WorkflowRenamer.py
 class Ui_MainWindow3(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -69,28 +45,19 @@ class Ui_MainWindow3(object):
     # setupUi
         QMetaObject.connectSlotsByName(MainWindow)
         wait(0.1)
-<<<<<<< HEAD:Final-Product/WorkflowRenamer.py
         abspath = os.path.dirname(os.path.abspath(__file__))
         WorkflowRenamePath = os.path.join(abspath, 'Files/Settings/workflowRenamerNum.txt')
         numFile = open(WorkflowRenamePath, 'r')
 
-=======
-        numFile = open(r'Product-Draft\Files\Settings\workflowRenamerNum.txt', 'r')
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/WorkflowRenamer.py
         workflowNum = numFile.read()
         numFile.close()
         print(workflowNum)
         def writeContent():
             content = self.workflowNameInput.text()
-<<<<<<< HEAD:Final-Product/WorkflowRenamer.py
             if len(content) >= 0:
                 abspath = os.path.dirname(os.path.abspath(__file__))
                 workflowRenameContentPath = os.path.join(abspath, 'Files/Settings/workflowRenamerContent.txt')
                 contentFile = open(workflowRenameContentPath, 'w')
-=======
-            if len(content) >= 0:            
-                contentFile = open(r'Product-Draft\Files\Settings\workflowRenamerContent.txt', 'w')
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/WorkflowRenamer.py
                 contentFile.write(str(content))
                 contentFile.close()
             else:

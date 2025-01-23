@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'test3rcHmBy.ui'
-##
-## Created by: Qt User Interface Compiler version 6.7.2
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
 from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, Qt, QRect)
 from PySide6.QtGui import (QIcon, QFont)
 from PySide6.QtWidgets import (QFormLayout, QFrame, QGridLayout, QHBoxLayout,

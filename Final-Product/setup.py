@@ -32,15 +32,9 @@ def Setup():
         temp_driver_path = ChromeDriverManager().install()
         shutil.copy2(temp_driver_path, ChromeDriverExePath)
     if not os.path.isfile(workflowNameTablePath):
-<<<<<<< HEAD:Final-Product/setup.py
         File = open(workflowNameTablePath, 'w')
         File.close()
         DataFile = open(workflowNameTablePath, 'w')
-=======
-        File = open('Product-Draft/Files/Settings/WorkflowNameTable.json', 'w')
-        File.close()
-        DataFile = open('Product-Draft/Files/Settings/WorkflowNameTable.json', 'w')
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/setup.py
         names = {
             "Workflow1Name": "Workflow1",
             "Workflow2Name": "Workflow2",
@@ -51,9 +45,3 @@ def Setup():
         compiledNames = (json.dumps(names))
         DataFile.write(compiledNames)
         DataFile.close()
-<<<<<<< HEAD:Final-Product/setup.py
-=======
-
-
-
->>>>>>> ba1df31ddd6ee6c6fbe6458b1413f6063709035e:Product-Draft/setup.py
