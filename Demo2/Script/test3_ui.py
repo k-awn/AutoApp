@@ -923,7 +923,7 @@ class Ui_MainWindow(object):
         self.SettingsButton.setText(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.HomepageButton.setText(QCoreApplication.translate("MainWindow", u"Homepage", None))
         self.ToolsButton.setText(QCoreApplication.translate("MainWindow", u"Tools", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"This is the draft of an app meant to automate certain tasks. It is going to be made for Daniel Emmer's Personal Project. ", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"This is the draft of an app meant to automate certain tasks. It is going to be made for my Personal Project. ", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">What is this?</span></p></body></html>", None))
         self.StartWorkflow1.setText("")
         self.DeleteWorkflow1.setText("")

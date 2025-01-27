@@ -406,7 +406,7 @@ class Ui_MainWindow(object):
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"this will display the page title someday", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt;\">What is this?</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:26pt;\">Homepage - QtDesigner Demo</span></p></body></html>", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"This is a demo of my personal project for Vilnius International School. In this demo, I am using QtDesigner to make a responsive GUI for a program that automates tedious tasks. ", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"This is a demo of my personal project. In this demo, I am using QtDesigner to make a responsive GUI for a program that automates tedious tasks. ", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:16pt;\">Workflow Page</span></p></body></html>", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"This is going to be the workflow page. There will be one (or multiple, depending on my abilities) trigger to automate a certain tasks. There will be five slots (possibly with the ability to add more) to create workflows in.", None))
         self.printButton.setText(QCoreApplication.translate("MainWindow", u"im going to print something", None))
