@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from time import sleep as wait
 import pyautogui
 import undetected_chromedriver as uc
-def she_skibidi_my_toilet_until_i_rizz():
+def censored():
     options2 = uc.ChromeOptions()
     prefs = {'credentials_enable_service': False,
             'profile.password_manager_enabled': False}
