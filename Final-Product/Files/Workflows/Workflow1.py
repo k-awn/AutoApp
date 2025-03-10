@@ -11,12 +11,4 @@ from pathlib import Path
 
 def response():
 	print("hotkey pressed")
-	absolutepath = abspath(WORKFLOW_PATH)
-	chromedriverPath = join(Path(absolutepath).parent.parent, "Chromedriver/chromedriver.exe")
-	options2 = uc.ChromeOptions()
-	prefs = {"credentials_enable_service": False, "profile.password_manager_enabled": False}
-	options2.add_experimental_option("prefs",prefs)
-	driver = uc.Chrome(options=options2, driver_executable_path=chromedriverPath)
-	driver.maximize_window()
-	driver.get("https://www.scribbr.com/citation/generator/")
 response()
