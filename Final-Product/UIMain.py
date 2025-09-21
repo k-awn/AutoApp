@@ -45,7 +45,19 @@ class Ui_MainWindow(object):
         self.WorkflowsButton.setSizePolicy(sizePolicy1)
         self.WorkflowsButton.setMinimumSize(QSize(100, 50))
         self.WorkflowsButton.setMaximumSize(QSize(100, 50))
-        self.WorkflowsButton.setStyleSheet(u"text-align:left;")
+        self.WorkflowsButton.setStyleSheet(u''' 
+    QPushButton {
+        border: none;
+        background-color: transparent;
+        padding: 2px;
+    }
+    QPushButton:hover {
+        background-color: rgba(128, 128, 128, 50);
+    }
+    QPushButton:pressed {
+        background-color: rgba(128, 128, 128, 100);
+    }
+''')
         icon = QIcon()
         icon.addFile(u":/Icons/account_tree_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.WorkflowsButton.setIcon(icon)
@@ -70,7 +82,7 @@ class Ui_MainWindow(object):
         self.SettingsButton.setSizePolicy(sizePolicy1)
         self.SettingsButton.setMinimumSize(QSize(100, 50))
         self.SettingsButton.setMaximumSize(QSize(100, 50))
-        self.SettingsButton.setStyleSheet(u"text-align:left;")
+        self.SettingsButton.setStyleSheet(u"text-align:left")
         icon1 = QIcon()
         icon1.addFile(u":/Icons/settings_30dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.SettingsButton.setIcon(icon1)
@@ -842,90 +854,148 @@ class Ui_MainWindow(object):
             self.WorkflowsButton.setStyleSheet('QPushButton {text-align: center;}')
             self.SettingsButton.setStyleSheet('QPushButton {text-align: center;}')
         else:
-            self.customToggle.setCheckState(Qt.CheckState.Unchecked)
-            self.MenuText.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Menu</span></p></body></html>", None))
-            setButtonSize(iconsize=20, buttonwidth=100)
-            self.SettingsButton.setText("Settings")
-            self.HomepageButton.setText("Homepage")
-            self.WorkflowsButton.setText("Workflows")
-            self.ToolsButton.setText("Tools")
-            self.MenuBar.setFixedWidth(100)
-            self.ToolsButton.setStyleSheet('QPushButton{text-align: left;}')
-            self.WorkflowsButton.setStyleSheet('QPushButton{text-align: left;}')
-            self.HomepageButton.setStyleSheet('QPushButton{text-align: left;}')
-            self.SettingsButton.setStyleSheet('QPushButton{text-align: left;}')
-            abspath = path.dirname(path.abspath(__file__))
-            Workflow1Exists = isfile(path.join(abspath, 'Files/workflows/workflow1.py'))
-            Workflow22Exists = isfile(path.join(abspath, 'Files/workflows/workflow2.py'))
-            Workflow3Exists = isfile(path.join(abspath, 'Files/workflows/workflow3.py'))
-            Workflow4Exists = isfile(path.join(abspath, 'Files/workflows/workflow4.py'))
-            Workflow5Exists = isfile(path.join(abspath, 'Files/workflows/workflow5.py'))
-            if Workflow1Exists is True:
-                self.Workflow1.setVisible(True)
-            else:
-                self.Workflow1.setVisible(False)
-            if Workflow22Exists is True:
-                self.Workflow2.setVisible(True)
-            else:
-                self.Workflow2.setVisible(False)
-            if Workflow3Exists is True:
-                self.Workflow3.setVisible(True)
-            else:
-                self.Workflow3.setVisible(False)
-            if Workflow4Exists is True:
-                self.Workflow4.setVisible(True)
-            else:
-                self.Workflow4.setVisible(False)
-            if Workflow5Exists is True:
-                self.Workflow5.setVisible(True)
-            else:
-                self.Workflow5.setVisible(False)
-            class runStart:
-                def run(self, num):
-                    from pyautogui import typewrite, click
-                    import keyboard
-                    import undetected_chromedriver as uc
-                    from selenium.webdriver.common.by import By
-                    from selenium.webdriver.support import expected_conditions as EC
-                    from time import sleep as wait
-                    from os import _exit
-                    abspath = path.dirname(path.abspath(__file__))
-                    workflow_path = path.join(abspath, 'Files/workflows/workflow' + str(num) + '.py')
-                    globals_dict = {
-                        'typewrite': typewrite,
-                        'click': click,
-                        'keyboard': keyboard,
-                        'uc': uc,
-                        'By': By,
-                        'EC': EC,
-                        'wait': wait,
-                        '_exit': _exit
-                    }
-                    globals_dict['WORKFLOW_PATH'] = workflow_path
-                    exec(open(path.join(abspath, 'Files/workflows/workflow' + str(num) + '.py')).read(), globals_dict)
-            def runStartWorkflow(num):
-                worker = runStart()
-                thread = threading.Thread(target=worker.run, args=(num,))  
-                thread.start()
-            
-            self.StartWorkflow1.clicked.connect(lambda: runStartWorkflow(1))
-            self.StartWorkflow2.clicked.connect(lambda: runStartWorkflow(2))
-            self.StartWorkflow3.clicked.connect(lambda: runStartWorkflow(3))
-            self.StartWorkflow4.clicked.connect(lambda: runStartWorkflow(4))
-            self.StartWorkflow5.clicked.connect(lambda: runStartWorkflow(5))
-            class runDelete():
-                def run(self,num):
-                    abspath = path.dirname(path.abspath(__file__))
-                    remove(path.join(abspath, f'Files/Workflows/Workflow{num}.py'))
-            def runDeleteWorkflow(num):
-                worker = runDelete()
-                thread = threading.Thread(target=worker.run, args=(num,))  
-                thread.start()
-            self.DeleteWorkflow1.clicked.connect(lambda: runDeleteWorkflow(1))
-            self.DeleteWorkflow2.clicked.connect(lambda: runDeleteWorkflow(2))
-            self.DeleteWorkflow3.clicked.connect(lambda: runDeleteWorkflow(3))
-            self.DeleteWorkflow4.clicked.connect(lambda: runDeleteWorkflow(4))
-            self.DeleteWorkflow5.clicked.connect(lambda: runDeleteWorkflow(5))
+                self.customToggle.setCheckState(Qt.CheckState.Unchecked)
+                self.MenuText.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Menu</span></p></body></html>", None))
+                setButtonSize(iconsize=20, buttonwidth=100)
+                self.SettingsButton.setText("Settings")
+                self.HomepageButton.setText("Homepage")
+                self.WorkflowsButton.setText("Workflows")
+                self.ToolsButton.setText("Tools")
+                self.MenuBar.setFixedWidth(100)
+                self.ToolsButton.setStyleSheet('QPushButton{text-align: left;}')
+                self.WorkflowsButton.setStyleSheet('QPushButton{text-align: left;}')
+                self.HomepageButton.setStyleSheet('QPushButton{text-align: left;}')
+                self.SettingsButton.setStyleSheet('QPushButton{text-align: left;}')
+                abspath = path.dirname(path.abspath(__file__))
+                Workflow1Exists = isfile(path.join(abspath, 'Files/workflows/workflow1.py'))
+                Workflow22Exists = isfile(path.join(abspath, 'Files/workflows/workflow2.py'))
+                Workflow3Exists = isfile(path.join(abspath, 'Files/workflows/workflow3.py'))
+                Workflow4Exists = isfile(path.join(abspath, 'Files/workflows/workflow4.py'))
+                Workflow5Exists = isfile(path.join(abspath, 'Files/workflows/workflow5.py'))
+                if Workflow1Exists is True:
+                        self.Workflow1.setVisible(True)
+                else:
+                        self.Workflow1.setVisible(False)
+                if Workflow22Exists is True:
+                        self.Workflow2.setVisible(True)
+                else:
+                        self.Workflow2.setVisible(False)
+                if Workflow3Exists is True:
+                        self.Workflow3.setVisible(True)
+                else:
+                        self.Workflow3.setVisible(False)
+                if Workflow4Exists is True:
+                        self.Workflow4.setVisible(True)
+                else:
+                        self.Workflow4.setVisible(False)
+                if Workflow5Exists is True:
+                        self.Workflow5.setVisible(True)
+                else:
+                        self.Workflow5.setVisible(False)
+                class runStart:
+                        def run(self, num):
+                                from pyautogui import typewrite, click
+                                import keyboard
+                                import undetected_chromedriver as uc
+                                from selenium.webdriver.common.by import By
+                                from selenium.webdriver.support import expected_conditions as EC
+                                from time import sleep as wait
+                                from os import _exit
+                                import os
+                                from os import path
+
+                                # Set up Chrome options
+                                options = uc.ChromeOptions()
+                                prefs = {
+                                "credentials_enable_service": False,
+                                "profile.password_manager_enabled": False
+                                }
+                                options.add_experimental_option("prefs", prefs)
+                                
+                                abspath = path.dirname(path.abspath(__file__))
+                                workflow_path = path.join(abspath, 'Files/workflows/workflow' + str(num) + '.py')
+                                
+                                globals_dict = {
+                                'typewrite': typewrite,
+                                'click': click,
+                                'keyboard': keyboard,
+                                'uc': uc,
+                                'By': By,
+                                'EC': EC,
+                                'wait': wait,
+                                '_exit': _exit,
+                                'chrome_options': options
+                                }
+                                
+                                globals_dict['WORKFLOW_PATH'] = workflow_path
+                                
+                                try:
+                                        with open(workflow_path, 'r') as file:
+                                                exec(file.read(), globals_dict)
+                                except Exception as e:
+                                        print(f"Error executing workflow: {str(e)}")
+
+                def runStartWorkflow(num):
+                        worker = runStart()
+                        thread = threading.Thread(target=worker.run, args=(num,))  
+                        thread.start()
+                
+                self.StartWorkflow1.clicked.connect(lambda: runStartWorkflow(1))
+                self.StartWorkflow2.clicked.connect(lambda: runStartWorkflow(2))
+                self.StartWorkflow3.clicked.connect(lambda: runStartWorkflow(3))
+                self.StartWorkflow4.clicked.connect(lambda: runStartWorkflow(4))
+                self.StartWorkflow5.clicked.connect(lambda: runStartWorkflow(5))
+                class runDelete():
+                        def run(self,num):
+                                abspath = path.dirname(path.abspath(__file__))
+                                remove(path.join(abspath, f'Files/Workflows/Workflow{num}.py'))
+                def runDeleteWorkflow(num):
+                        worker = runDelete()
+                        thread = threading.Thread(target=worker.run, args=(num,))  
+                        thread.start()
+                self.DeleteWorkflow1.clicked.connect(lambda: runDeleteWorkflow(1))
+                self.DeleteWorkflow2.clicked.connect(lambda: runDeleteWorkflow(2))
+                self.DeleteWorkflow3.clicked.connect(lambda: runDeleteWorkflow(3))
+                self.DeleteWorkflow4.clicked.connect(lambda: runDeleteWorkflow(4))
+                self.DeleteWorkflow5.clicked.connect(lambda: runDeleteWorkflow(5))
         self.SettingsButton.hide()
 
-    # setupUi
+        # setupUi
+        buttonstyle = '''
+        QPushButton {
+                border: none;
+                background-color: transparent;
+                padding: 2px;
+                border-radius:5px;
+        }
+        QPushButton:hover {
+                background-color: rgba(128, 128, 128, 50);
+        }
+        QPushButton:pressed {
+                background-color: rgba(128, 128, 128, 100);
+        }
+        '''
+        buttons = [
+                self.HomepageButton,
+                self.WorkflowsButton,
+                self.ToolsButton,
+                self.SettingsButton,
+                self.DeleteWorkflow1,
+                self.DeleteWorkflow2,
+                self.DeleteWorkflow3,
+                self.DeleteWorkflow4,
+                self.DeleteWorkflow5,
+                self.StartWorkflow1,
+                self.StartWorkflow2,
+                self.StartWorkflow3,
+                self.StartWorkflow4,
+                self.StartWorkflow5,
+                self.RenameWorkflow1,
+                self.RenameWorkflow2,
+                self.RenameWorkflow3,
+                self.RenameWorkflow4,
+                self.RenameWorkflow5,
+                self.MenuButton
+        ]
+        for button in buttons:
+                button.setStyleSheet(buttonstyle)
