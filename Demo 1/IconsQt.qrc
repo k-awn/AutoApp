@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="icons">
-    <file>assets/images/wrench-icon.png</file>
-    <file>assets/images/home-icon.png</file>
-    <file>assets/images/settings-icon.png</file>
-    <file>assets/images/workflow-icon.png</file>
-  </qresource>
-</RCC>

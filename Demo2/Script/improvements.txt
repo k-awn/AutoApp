@@ -1,1 +1,0 @@
-make it so that the user can choose the emergency hotkey
