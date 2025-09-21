@@ -1,6 +1,5 @@
-# run from here 
 import sys 
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QPalette, QColor
 from PySide6.QtCore import QCoreApplication, Qt
 from PySide6 import QtWidgets
 from UIMain import Ui_MainWindow
@@ -15,11 +14,19 @@ from os import path
 import json
 from xyPicker import Ui_MainWindow4
 from PySide6.QtWidgets import QMessageBox
-Setup() #? If the user deletes any of the files on accident it will regenerate them
+try:
+    import distutils
+    import distutils.version
+except ImportError:
+    from setuptools._distutils import version as distutils_version
+    from setuptools import _distutils as distutils
+
+Setup() #? If the user deletes any of the files on accident it will regenerate them. In addition saves me the pain of figuring out how to use --addfiles on PyInstaller
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
+
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowTitle('Main Window')
@@ -115,7 +122,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.xy_picker = xyPicker()  # Create an instance
         self.xy_picker.show()
 
-
     def open_workflow_maker(self):  
         self.workflow_maker = WorkflowMaker()
         self.workflow_maker.show()
@@ -190,16 +196,65 @@ class xyPicker(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow4()
         self.ui.setupUi(self)
         self.setWindowTitle('Tool: X-Y Coordinate Picker')
-        
-
+     
 if __name__ == "__main__":
+    import winreg
+    original_theme = None
+
+    # Save current theme setting and switch to dark mode
+    if sys.platform == "win32":
+        try:
+            registry = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
+            key = winreg.OpenKey(registry, r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", 0, winreg.KEY_ALL_ACCESS)
+            original_theme = winreg.QueryValueEx(key, "AppsUseLightTheme")[0]  # Save original value
+            winreg.SetValueEx(key, "AppsUseLightTheme", 0, winreg.REG_DWORD, 0)  # Set dark mode
+            winreg.CloseKey(key)
+        except:
+            pass
+            
     app = QtWidgets.QApplication(sys.argv)
+    window = MainWindow()
+    
+    # Set dark mode for title bar
+    try:
+        from ctypes import windll, c_int, byref, sizeof
+        DWMWA_USE_IMMERSIVE_DARK_MODE = 20
+        windll.dwmapi.DwmSetWindowAttribute(
+            int(window.winId()),
+            DWMWA_USE_IMMERSIVE_DARK_MODE,
+            byref(c_int(2)),
+            sizeof(c_int)
+        )
+    except:
+        pass
+
     abspath = os.path.dirname(os.path.abspath(__file__))
     icoPath = os.path.join(abspath, 'Applogo.ico')
-    pngPath = os.path.join(abspath, 'Applogo.png')
     logo = QIcon()
     logo.addFile(icoPath)
     app.setWindowIcon(logo)
-    window = MainWindow()
-    window.showMaximized()
+    
+    window.show()
+    
+    # Restore original theme when app closes
+    try:
+        app.aboutToQuit.connect(lambda: restore_theme(original_theme))
+    except:
+        pass
+
+    def restore_theme(original_value):
+        if original_value is not None and sys.platform == "win32":
+            try:
+                registry = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
+                key = winreg.OpenKey(registry, r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", 0, winreg.KEY_ALL_ACCESS)
+                winreg.SetValueEx(key, "AppsUseLightTheme", 0, winreg.REG_DWORD, original_value)
+                winreg.CloseKey(key)
+            except:
+                pass
+
     sys.exit(app.exec())
+
+
+
+
+    
