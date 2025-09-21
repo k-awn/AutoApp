@@ -931,6 +931,29 @@ class Ui_MainWindow2(object):
             
             self.deleteButtons[count].clicked.connect(lambda checked, key=count: orderedMethod.pop(key, None))
             self.deleteButtons[count].clicked.connect(lambda checked, row=count: [self.LabelLayout.itemAtPosition(row, col).widget().deleteLater() for col in range(2) if self.LabelLayout.itemAtPosition(row, col)])
+            self.deleteButtons[count].setStyleSheet("""
+                QPushButton {
+                    background-color: #292626;
+                    color: #696464;
+                    border: none;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    margin: 0px;
+                    padding: 5px;
+                    max-width: 100px;
+                    font: bold
+                }
+                QPushButton:hover {
+                    background-color: #908c8c;
+                    color: red
+                                                    
+                }
+                QPushButton:pressed {
+                    background-color: #302c2c;
+                }
+            """)
             self.LabelLayout.addWidget(self.deleteButtons[count], count, 1, 1, 1)
         
         
