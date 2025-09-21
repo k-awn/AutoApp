@@ -15,7 +15,7 @@ from os import path
 import json
 from xyPicker import Ui_MainWindow4
 from PySide6.QtWidgets import QMessageBox
-Setup() #? If the user deletes any of the files on accident it will regenerate them. In addition saves me the pain of figuring out how to use --addfiles on PyInstaller
+Setup() #? If the user deletes any of the files on accident it will regenerate them
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
