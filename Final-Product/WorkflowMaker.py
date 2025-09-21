@@ -813,6 +813,8 @@ class Ui_MainWindow2(object):
                 self.triggerLabel.setStyleSheet('font-size: 15pt')
                 self.LabelLayout.addWidget(self.triggerLabel, count, 0, 1, 1)
 
+        self.deleteButtons = {}
+            
         def AddFunction():
             funcIndex = str(self.functionDropDown.currentIndex()) # current index of the function dropdown
             count = self.LabelLayout.count() - 1
@@ -925,6 +927,13 @@ class Ui_MainWindow2(object):
             self.functionLabel.setWordWrap(True)
             self.functionLabel.setStyleSheet('font-size: 12pt')
             self.LabelLayout.addWidget(self.functionLabel, count,0,1,1)
+            self.deleteButtons[count] = QPushButton('Delete')
+            
+            self.deleteButtons[count].clicked.connect(lambda checked, key=count: orderedMethod.pop(key, None))
+            self.deleteButtons[count].clicked.connect(lambda checked, row=count: [self.LabelLayout.itemAtPosition(row, col).widget().deleteLater() for col in range(2) if self.LabelLayout.itemAtPosition(row, col)])
+            self.LabelLayout.addWidget(self.deleteButtons[count], count, 1, 1, 1)
+        
+        
         def Check(): 
             
             if self.LabelLayout.count() - 1 == 0:
@@ -985,7 +994,7 @@ class Ui_MainWindow2(object):
             values = len(orderedMethod)
             writeText = open(filepath, 'w')
             writeText.write('#New start')
-            writeText.write('\n' + 'import keyboard' + '\n' + 'from selenium.webdriver.common.by import By' + '\n' + 'from selenium.webdriver.support import expected_conditions as EC' + '\n' + 'import undetected_chromedriver as uc' + '\n' + 'from time import sleep as wait' + '\n' + 'import pyautogui' + '\n' + 'from os import _exit' + '\n' + 'from os.path import abspath, join' + '\n' + 'from pathlib import Path') #? All the imports are here!
+            writeText.write('\n' + 'import keyboard' + '\n' + 'from selenium.webdriver.common.by import By' + '\n' + 'from selenium.webdriver.support import expected_conditions as EC' + '\n' + 'import undetected_chromedriver as uc' + '\n' + 'from time import sleep as wait' + '\n' + 'import pyautogui' + '\n' + 'from os import _exit, path' + '\n' + 'from os.path import abspath, join') #? All the imports are here!
             writeText.write('\n\n' + 'def response():' + '\n\t' + 'print("hotkey pressed")')
 
             if values > 1:
@@ -997,7 +1006,7 @@ class Ui_MainWindow2(object):
                     writeText.write(prevText + '\n\t')
                     if orderedMethod[realnum]['type'] == 'Open Browser':
                         #? The below code is barely readable due to the amount of lines required. \n\t means new line, new tab.
-                        writeText.write('absolutepath = abspath(WORKFLOW_PATH)\n\tchromedriverPath = join(Path(absolutepath).parent.parent, "Chromedriver/chromedriver.exe")\n\t')
+                        writeText.write('absolutepath = abspath(WORKFLOW_PATH)\n\tparent_dir = path.dirname(absolutepath)\n\tgrand_parent_dir = path.dirname(parent_dir)\n\tchromedriverPath = join(grand_parent_dir, "Chromedriver/chromedriver.exe")\n\t')
                         writeText.write('options2 = uc.ChromeOptions()\n\tprefs = {"credentials_enable_service": False, "profile.password_manager_enabled": False}\n\toptions2.add_experimental_option("prefs",prefs)\n\tdriver = uc.Chrome(options=options2, driver_executable_path=chromedriverPath)\n\tdriver.maximize_window()\n\t') #TODO: Make driver.maximize_window optional (might not do this), also these are the settings
                         writeText.write(f'driver.get("{orderedMethod[realnum]['url']}")') #! this is the line that opens the browser at the specified url
                     elif orderedMethod[realnum]['type'] == 'Click Button':
@@ -1201,4 +1210,50 @@ class Ui_MainWindow2(object):
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Triggers", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:28pt; font-weight:700;\">Workflow Creator</span></p></body></html>", None))
         self.CompileButton.setText(QCoreApplication.translate("MainWindow", u"Create Workflow", None))
-    # retranslateUiqwzqqwzqeqwz
+        self.original_style = """
+            QLineEdit, QPlainTextEdit {
+                color: #999999;
+                border:none;
+            }
+            QLineEdit::placeholder, QPlainTextEdit::placeholder {
+                color: #999999;
+            }
+        """
+        self.red_style = """
+            QLineEdit, QPlainTextEdit {
+                color: #ff073a;
+                border:none;
+            }
+            QLineEdit::placeholder, QPlainTextEdit::placeholder {
+                color: #ff073a;
+            }
+        """
+        
+        def on_button_pressed():
+            # Get all QLineEdit widgets
+            line_edits = MainWindow.findChildren(QLineEdit)
+            for widget in line_edits:
+                if len(widget.text()) == 0:
+                    widget.setStyleSheet(self.red_style)                
+            # Get all QPlainTextEdit widgets
+            text_edits = MainWindow.findChildren(QPlainTextEdit)
+            for widget in text_edits:
+                if len(widget.toPlainText()) == 0:
+                    widget.setStyleSheet(self.red_style)
+        def on_button_released():
+            # Get all QLineEdit widgets
+            line_edits = MainWindow.findChildren(QLineEdit)
+            for widget in line_edits:
+                widget.setStyleSheet(self.original_style)
+                
+            # Get all QPlainTextEdit widgets
+            text_edits = MainWindow.findChildren(QPlainTextEdit)
+            for widget in text_edits:
+                widget.setStyleSheet(self.original_style)
+
+        self.pushButton.pressed.connect(on_button_pressed)
+        self.pushButton.released.connect(on_button_released)
+        self.pushButton_2.pressed.connect(on_button_pressed)
+        self.pushButton_2.released.connect(on_button_released)
+
+        

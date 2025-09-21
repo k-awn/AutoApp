@@ -1,3 +1,4 @@
+# "how do i make a dropdown with a dropdown inside of it" prompt. Amazon Q, November version, Amazon, November 2024, Visual Studio Code
 from PySide6.QtWidgets import (QToolButton, QMenu)
 from PySide6.QtCore import Signal, Qt
 
