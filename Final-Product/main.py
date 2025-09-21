@@ -1,3 +1,4 @@
+# run from here 
 import sys 
 from PySide6.QtGui import QIcon
 from PySide6.QtCore import QCoreApplication, Qt
