@@ -813,8 +813,64 @@ class Ui_MainWindow2(object):
                 self.triggerLabel.setStyleSheet('font-size: 15pt')
                 self.LabelLayout.addWidget(self.triggerLabel, count, 0, 1, 1)
 
+        self.upButton = {}
+        self.downButton = {}
         self.deleteButtons = {}
-            
+        self.rowMap = {}  # Maps button index to current row position
+        
+        def moveRowUp(btnIndex):
+            row = self.rowMap.get(btnIndex, btnIndex)
+            if row <= 1:
+                return
+            # Find the nearest row above that exists
+            aboveRow = None
+            aboveBtnIndex = None
+            for r in range(row - 1, -1, -1):
+                if r in orderedMethod:
+                    aboveRow = r
+                    # Find which button is at this row
+                    for idx, pos in self.rowMap.items():
+                        if pos == r:
+                            aboveBtnIndex = idx
+                            break
+                    break
+            if aboveRow is None or aboveBtnIndex is None:
+                return
+            orderedMethod[row], orderedMethod[aboveRow] = orderedMethod[aboveRow], orderedMethod[row]
+            self.rowMap[btnIndex], self.rowMap[aboveBtnIndex] = aboveRow, row
+            for col in range(4):
+                currentItem = self.LabelLayout.itemAtPosition(row, col)
+                aboveItem = self.LabelLayout.itemAtPosition(aboveRow, col)
+                if currentItem and aboveItem:
+                    self.LabelLayout.addWidget(currentItem.widget(), aboveRow, col)
+                    self.LabelLayout.addWidget(aboveItem.widget(), row, col)
+
+        def moveRowDown(btnIndex):
+            row = self.rowMap.get(btnIndex, btnIndex)
+            # Find the nearest row below that exists
+            belowRow = None
+            belowBtnIndex = None
+            maxRow = max(orderedMethod.keys()) if orderedMethod else 0
+            for r in range(row + 1, maxRow + 1):
+                if r in orderedMethod:
+                    belowRow = r
+                    # Find which button is at this row
+                    for idx, pos in self.rowMap.items():
+                        if pos == r:
+                            belowBtnIndex = idx
+                            break
+                    break
+            if belowRow is None or belowBtnIndex is None:
+                return
+            orderedMethod[row], orderedMethod[belowRow] = orderedMethod[belowRow], orderedMethod[row]
+            self.rowMap[btnIndex], self.rowMap[belowBtnIndex] = belowRow, row
+            for col in range(4):
+                currentItem = self.LabelLayout.itemAtPosition(row, col)
+                belowItem = self.LabelLayout.itemAtPosition(belowRow, col)
+                if currentItem and belowItem:
+                    self.LabelLayout.addWidget(currentItem.widget(), belowRow, col)
+                    self.LabelLayout.addWidget(belowItem.widget(), row, col)
+
         def AddFunction():
             funcIndex = str(self.functionDropDown.currentIndex()) # current index of the function dropdown
             count = self.LabelLayout.count() - 1
@@ -927,10 +983,17 @@ class Ui_MainWindow2(object):
             self.functionLabel.setWordWrap(True)
             self.functionLabel.setStyleSheet('font-size: 12pt')
             self.LabelLayout.addWidget(self.functionLabel, count,0,1,1)
-            self.deleteButtons[count] = QPushButton('Delete')
+            def deleteRow(btnIndex):
+                row = self.rowMap.get(btnIndex, btnIndex)
+                orderedMethod.pop(row, None)
+                self.rowMap.pop(btnIndex, None)
+                for col in range(4):
+                    item = self.LabelLayout.itemAtPosition(row, col)
+                    if item:
+                        item.widget().deleteLater()
             
-            self.deleteButtons[count].clicked.connect(lambda checked, key=count: orderedMethod.pop(key, None))
-            self.deleteButtons[count].clicked.connect(lambda checked, row=count: [self.LabelLayout.itemAtPosition(row, col).widget().deleteLater() for col in range(2) if self.LabelLayout.itemAtPosition(row, col)])
+            self.deleteButtons[count] = QPushButton('Delete')
+            self.deleteButtons[count].clicked.connect(lambda checked, idx=count: deleteRow(idx))
             self.deleteButtons[count].setStyleSheet("""
                 QPushButton {
                     background-color: #292626;
@@ -954,8 +1017,63 @@ class Ui_MainWindow2(object):
                     background-color: #302c2c;
                 }
             """)
-            self.LabelLayout.addWidget(self.deleteButtons[count], count, 1, 1, 1)
-        
+            self.LabelLayout.addWidget(self.deleteButtons[count], count, 3, 1, 1)
+
+            self.upButton[count] = QPushButton('Up')
+            self.downButton[count] = QPushButton('Down')
+            self.upButton[count].setStyleSheet("""
+                QPushButton {
+                    background-color: #292626;
+                    color: #696464;
+                    border: none;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    margin: 0px;
+                    padding: 5px;
+                    max-width: 100px;
+                    font: bold
+                }
+                QPushButton:hover {
+                    background-color: #908c8c;
+                    color: red
+                                                    
+                }
+                QPushButton:pressed {
+                    background-color: #302c2c;
+                }
+            """)
+            self.downButton[count].setStyleSheet("""
+                QPushButton {
+                    background-color: #292626;
+                    color: #696464;
+                    border: none;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    margin: 0px;
+                    padding: 5px;
+                    max-width: 100px;
+                    font: bold
+                }
+                QPushButton:hover {
+                    background-color: #908c8c;
+                    color: red
+                                                    
+                }
+                QPushButton:pressed {
+                    background-color: #302c2c;
+                }
+            """)
+            self.LabelLayout.addWidget(self.downButton[count], count, 2, 1, 1)
+            self.LabelLayout.addWidget(self.upButton[count], count, 1, 1, 1)
+            self.rowMap[count] = count
+            self.upButton[count].clicked.connect(lambda checked, idx=count: moveRowUp(idx))
+            self.downButton[count].clicked.connect(lambda checked, idx=count: moveRowDown(idx)) 
+
+
         
         def Check(): 
             
