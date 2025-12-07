@@ -776,7 +776,7 @@ class Ui_MainWindow2(object):
                 orderedMethod[count] = {'type': 'InstantRun'}
                 additionalContent = ('')
             if trigIndex == '1':
-                additionalContent = 'error (pls email me)'
+                additionalContent = 'error'
                 if self.comboBox.currentIndex() == 0:
                     hotkey = self.lineEdit.text()
                     if len(hotkey) == 0:
@@ -825,13 +825,13 @@ class Ui_MainWindow2(object):
             # Find the nearest row above that exists
             aboveRow = None
             aboveBtnIndex = None
-            for r in range(row - 1, -1, -1):
-                if r in orderedMethod:
-                    aboveRow = r
+            for row in range(row - 1, -1, -1):
+                if row in orderedMethod:
+                    aboveRow = row
                     # Find which button is at this row
-                    for idx, pos in self.rowMap.items():
-                        if pos == r:
-                            aboveBtnIndex = idx
+                    for index, pos in self.rowMap.items():
+                        if pos == row:
+                            aboveBtnIndex = index
                             break
                     break
             if aboveRow is None or aboveBtnIndex is None:
@@ -851,13 +851,13 @@ class Ui_MainWindow2(object):
             belowRow = None
             belowBtnIndex = None
             maxRow = max(orderedMethod.keys()) if orderedMethod else 0
-            for r in range(row + 1, maxRow + 1):
-                if r in orderedMethod:
-                    belowRow = r
+            for row in range(row + 1, maxRow + 1):
+                if row in orderedMethod:
+                    belowRow = row
                     # Find which button is at this row
-                    for idx, pos in self.rowMap.items():
-                        if pos == r:
-                            belowBtnIndex = idx
+                    for index, pos in self.rowMap.items():
+                        if pos == row:
+                            belowBtnIndex = index
                             break
                     break
             if belowRow is None or belowBtnIndex is None:
@@ -877,20 +877,20 @@ class Ui_MainWindow2(object):
 
             #! FuncIndex = 0
             indexKey = {
-                0 : 'Open Browser', #Working
-                1 : 'Click Button', #Working
-                2 : 'Click', #Working
-                3 : 'Type', #Working
-                4 : 'Wait', #Working
-                5 : 'Press Key', #working
-                6 : 'Press Key Combination', #working
-                7 : 'Click Image', #working
-                8 : 'New Desktop', #working
-                9 : 'Close Desktop', #working
-                10 : 'Next Desktop', #working
-                11 : 'Previous Desktop', #working
-                12 : 'New Tab', #working
-                13 : 'Close Tab' #working
+                0 : 'Open Browser', 
+                1 : 'Click Button', 
+                2 : 'Click', 
+                3 : 'Type', 
+                4 : 'Wait', 
+                5 : 'Press Key', 
+                6 : 'Press Key Combination', 
+                7 : 'Click Image', 
+                8 : 'New Desktop', 
+                9 : 'Close Desktop', 
+                10 : 'Next Desktop', 
+                11 : 'Previous Desktop', 
+                12 : 'New Tab', 
+                13 : 'Close Tab' 
             }
             print(count)
             from time import sleep
@@ -993,7 +993,7 @@ class Ui_MainWindow2(object):
                         item.widget().deleteLater()
             
             self.deleteButtons[count] = QPushButton('Delete')
-            self.deleteButtons[count].clicked.connect(lambda checked, idx=count: deleteRow(idx))
+            self.deleteButtons[count].clicked.connect(lambda checked, index=count: deleteRow(index))
             self.deleteButtons[count].setStyleSheet("""
                 QPushButton {
                     background-color: #292626;
@@ -1070,8 +1070,8 @@ class Ui_MainWindow2(object):
             self.LabelLayout.addWidget(self.downButton[count], count, 2, 1, 1)
             self.LabelLayout.addWidget(self.upButton[count], count, 1, 1, 1)
             self.rowMap[count] = count
-            self.upButton[count].clicked.connect(lambda checked, idx=count: moveRowUp(idx))
-            self.downButton[count].clicked.connect(lambda checked, idx=count: moveRowDown(idx)) 
+            self.upButton[count].clicked.connect(lambda checked, index=count: moveRowUp(index))
+            self.downButton[count].clicked.connect(lambda checked, index=count: moveRowDown(index)) 
 
 
         
@@ -1104,8 +1104,7 @@ class Ui_MainWindow2(object):
         "}")
                 return
         def Compile():
-            #! All the code in this function is in plaintext written into a python file, you may have difficulties understanding what's written here
-            #? check if 
+            #! All the code in this function is in plaintext written into a python file, I don't know if there's another way to do this
             created = False
             for i in range(5):
                 if created:
@@ -1146,44 +1145,44 @@ class Ui_MainWindow2(object):
                     prevText = prevVersion.read()
                     writeText.write(prevText + '\n\t')
                     if orderedMethod[realnum]['type'] == 'Open Browser':
-                        #? The below code is barely readable due to the amount of lines required. \n\t means new line, new tab.
+                        #? The below code is barely readable due to the amount of lines required - \n\t means new line, new tab.
                         writeText.write('absolutepath = abspath(WORKFLOW_PATH)\n\tparent_dir = path.dirname(absolutepath)\n\tgrand_parent_dir = path.dirname(parent_dir)\n\tchromedriverPath = join(grand_parent_dir, "Chromedriver/chromedriver.exe")\n\t')
                         writeText.write('options2 = uc.ChromeOptions()\n\tprefs = {"credentials_enable_service": False, "profile.password_manager_enabled": False}\n\toptions2.add_experimental_option("prefs",prefs)\n\tdriver = uc.Chrome(options=options2, driver_executable_path=chromedriverPath)\n\tdriver.maximize_window()\n\t') #TODO: Make driver.maximize_window optional (might not do this), also these are the settings
                         writeText.write(f'driver.get("{orderedMethod[realnum]['url']}")') #! this is the line that opens the browser at the specified url
                     elif orderedMethod[realnum]['type'] == 'Click Button':
-                        writeText.write(f'driver.find_element(By.XPATH, "{(orderedMethod[realnum]['xpath'])}").click()') #TODO: Try to make a tutorial especially for this 
+                        writeText.write(f'driver.find_element(By.XPATH, "{(orderedMethod[realnum]['xpath'])}").click()') # 
                     elif orderedMethod[realnum]['type'] == 'Click':
                         writeText.write(f'pyautogui.click(x={str(orderedMethod[realnum]['xcoord'])}, y={str(orderedMethod[realnum]['ycoord'])})')
                     elif orderedMethod[realnum]['type'] == 'Type':
-                        writeText.write(f'pyautogui.typewrite("{orderedMethod[realnum]['content']}",interval={orderedMethod[realnum]['interval']})') #!Add interval later on
+                        writeText.write(f'pyautogui.typewrite("{orderedMethod[realnum]['content']}",interval={orderedMethod[realnum]['interval']})') 
                     elif orderedMethod[realnum]['type'] == 'Wait':
                         writeText.write(f'wait({orderedMethod[realnum]['duration']})')
                     elif orderedMethod[realnum]['type'] == 'Press Key':
                         writeText.write(f'pyautogui.press("{orderedMethod[realnum]['key']}")')
                     elif orderedMethod[realnum]['type'] == 'Press Key Combination': 
-                        writeText.write(f'with pyautogui.hold("{orderedMethod[realnum]['key1']}"): \n\t\tpyautogui.press("{orderedMethod[realnum]['key2']}")') #! untested
+                        writeText.write(f'with pyautogui.hold("{orderedMethod[realnum]['key1']}"): \n\t\tpyautogui.press("{orderedMethod[realnum]['key2']}")') 
                     elif orderedMethod[realnum]['type'] == 'Click Image':
-                        writeText.write(f'x, y = pyautogui.locateCenterOnScreen("{orderedMethod[realnum]['filepath']}", confidence={orderedMethod[realnum]['accuracy']}) \n\tpyautogui.click(x, y)') #! untested
+                        writeText.write(f'x, y = pyautogui.locateCenterOnScreen("{orderedMethod[realnum]['filepath']}", confidence={orderedMethod[realnum]['accuracy']}) \n\tpyautogui.click(x, y)') 
                     elif orderedMethod[realnum]['type'] == 'Open New Desktop':
-                        writeText.write('with pyautogui.hold(["win", "ctrl"]): \n\t\tpyautogui.press("d")') #! untested)
+                        writeText.write('with pyautogui.hold(["win", "ctrl"]): \n\t\tpyautogui.press("d")') 
                     elif orderedMethod[realnum]['type'] == 'Close Desktop':
-                        writeText.write('with pyautogui.hold(["win", "ctrl", "fn"]): \n\t\tpyautogui.press("f4")') #! untested
+                        writeText.write('with pyautogui.hold(["win", "ctrl", "fn"]): \n\t\tpyautogui.press("f4")') 
                     elif orderedMethod[realnum]['type'] == 'Next Desktop':
-                        writeText.write('with pyautogui.hold(["win", "ctrl"]): \n\t\tpyautogui.press("right")') #! untested
+                        writeText.write('with pyautogui.hold(["win", "ctrl"]): \n\t\tpyautogui.press("right")') 
                     elif orderedMethod[realnum]['type'] == 'Previous Desktop':
-                        writeText.write('with pyautogui.hold(["win", "ctrl"]): \n\t\tpyautogui.press("left")') #! untested
+                        writeText.write('with pyautogui.hold(["win", "ctrl"]): \n\t\tpyautogui.press("left")') 
                     elif orderedMethod[realnum]['type'] == 'New Tab':
-                        writeText.write(f'with pyautogui.hold("ctrl"): \n\t\tpyautogui.press("t") \n\tpyautogui.typewrite("{orderedMethod[realnum]['tab']}", interval=0)\n\tpyautogui.press("enter")') # WOrking
+                        writeText.write(f'with pyautogui.hold("ctrl"): \n\t\tpyautogui.press("t") \n\tpyautogui.typewrite("{orderedMethod[realnum]['tab']}", interval=0)\n\tpyautogui.press("enter")') 
                     elif orderedMethod[realnum]['type'] == 'Close Tab':
-                        writeText.write('with pyautogui.hold("ctrl"): \n\t\tpyautogui.press("w") \n\t') #! untested'
+                        writeText.write('with pyautogui.hold("ctrl"): \n\t\tpyautogui.press("w") \n\t') 
                     
-            #!Hotkeys come aftr because it refers to the function where all the functions are sooo
+            #!Hotkeys come aftr because it refers to the function where all the functions are
             try:
                 if orderedMethod[0]['type'] == 'Hotkey':
                     print('HOTKEY')
                     if self.comboBox.currentIndex() == 0:
                         hotkey = orderedMethod[0]['hotkey']
-                        writeText.write(f'\n\nkeyboard.add_hotkey("{hotkey}", response, suppress=True, trigger_on_release=True, timeout=1) ') #TODO: Make trigger on release an option  
+                        writeText.write(f'\n\nkeyboard.add_hotkey("{hotkey}", response, suppress=True, trigger_on_release=True, timeout=1) ')   
                         writeText.write('\nkeyboard.wait("esc")\n_exit(0)')
                     elif self.comboBox.currentIndex() == 1:
                         hotkey = orderedMethod[0]['hotkey']
@@ -1196,7 +1195,7 @@ class Ui_MainWindow2(object):
                         hotkey3 = orderedMethod[0]['hotkey3']
                         writeText.write(f'\n\nkeyboard.add_hotkey("{hotkey} + {hotkey2} + {hotkey3}", response, suppress=True, trigger_on_release=True, timeout=1) ')
                         writeText.write('\nkeyboard.wait("esc")\n_exit(0)')
-                    #! My genius idae: since you only have one hotkey you must do hotkey then def response and everything else goes into response !!! screw readability
+                    #! My genius idea: since you only have one hotkey you must do hotkey then def response and everything else goes into response 
                 elif orderedMethod[0]['type'] == 'InstantRun':
                     print('INSTANT')
                     writeText.write('\nresponse()')
@@ -1221,7 +1220,6 @@ class Ui_MainWindow2(object):
         self.pushButton_4.clicked.connect(lambda: self.stackedWidget.setCurrentIndex(1))
         def updateInfo():
             self.functionDropDown.show()
-            print('E')
             #!triggertext
             if self.triggerDropDown.currentIndex() == 0:
                 self.InfoTrig.setText('This trigger will cause the workflow to run as soon as the green button is pressed.')
@@ -1381,6 +1379,7 @@ class Ui_MainWindow2(object):
             for widget in text_edits:
                 if len(widget.toPlainText()) == 0:
                     widget.setStyleSheet(self.red_style)
+                    
         def on_button_released():
             # Get all QLineEdit widgets
             line_edits = MainWindow.findChildren(QLineEdit)

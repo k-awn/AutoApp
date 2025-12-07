@@ -1,6 +1,6 @@
 import sys 
-from PySide6.QtGui import QIcon, QPalette, QColor
-from PySide6.QtCore import QCoreApplication, Qt
+from PySide6.QtGui import QIcon
+from PySide6.QtCore import QCoreApplication
 from PySide6 import QtWidgets
 from UIMain import Ui_MainWindow
 from WorkflowMaker import Ui_MainWindow2 
@@ -98,7 +98,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 DataFile.close()
                 self.ui.Workflow4Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">" + text + "</span></p></body></html>", None))
             else:
-                print('its the 5th')
                 DataTable = open(workflowNameTablePath, 'r')
                 data = json.load(DataTable)
                 DataTable.close()
@@ -108,7 +107,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 DataFile.write(compiledData)
                 DataFile.close()
                 self.ui.Workflow5Name.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">" + text + "</span></p></body></html>", None))
-            print('end')
         WorkflowRenamePath = os.path.join(abspath, 'Files/Settings/workflowRenamerNum.txt')
 
         open(WorkflowRenamePath, 'w').write(str(num))
@@ -162,9 +160,9 @@ class WorkflowMaker(QtWidgets.QMainWindow):
         confirmation = QMessageBox.question(self, "Confirmation", "Are you sure you've finished your workflow? (It does not autosave)", QMessageBox.Yes | QMessageBox.No)
 
         if confirmation == QMessageBox.Yes:
-            event.accept()  # Close the app
+            event.accept()
         else:
-            event.ignore()  # Don't close the app
+            event.ignore()  
 
     def __init__(self):
         super().__init__()

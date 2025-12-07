@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf8'?>
+<nuitka-compilation-report nuitka_version="2.6.9" nuitka_commercial_version="not installed" mode="standalone" completion="exception">
+  <exception exception_type="TypeError" exception_value="_path_isfile: path should be string, bytes, os.PathLike or integer, not NoneType">
+Traceback (most recent call last):
+  File "C:\Users\danie\OneDrive\Desktop\vscode\python\Projects\AutoApp-main\.venv\Lib\site-packages\nuitka\MainControl.py", line 1160, in main
+    _main()
+  File "C:\Users\danie\OneDrive\Desktop\vscode\python\Projects\AutoApp-main\.venv\Lib\site-packages\nuitka\MainControl.py", line 998, in _main
+    main_module = _createMainModule()
+                  ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\danie\OneDrive\Desktop\vscode\python\Projects\AutoApp-main\.venv\Lib\site-packages\nuitka\MainControl.py", line 227, in _createMainModule
+    scanIncludedPackage(package_name)
+  File "C:\Users\danie\OneDrive\Desktop\vscode\python\Projects\AutoApp-main\.venv\Lib\site-packages\nuitka\importing\Recursion.py", line 588, in scanIncludedPackage
+    scanPluginPath(
+  File "C:\Users\danie\OneDrive\Desktop\vscode\python\Projects\AutoApp-main\.venv\Lib\site-packages\nuitka\importing\Recursion.py", line 440, in scanPluginPath
+    if os.path.isfile(plugin_filename) or isPackageDir(plugin_filename):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: _path_isfile: path should be string, bytes, os.PathLike or integer, not NoneType
+</exception>
+  <performance>
+    <memory_usage name="after_launch" value="44371968" />
+  </performance>
+  <data_composer blob_size="None" />
+  <command_line>
+    <option value="--standalone" />
+    <option value="--windows-console-mode=force" />
+    <option value="--windows-icon-from-ico=C:\Users\danie\OneDrive\Desktop\vscode\python\Projects\AutoApp-main\AutoApp-main\Final-Product\AppLogo.ico" />
+    <option value="--output-dir=C:\MACRO" />
+    <option value="--output-filename=AutoApp" />
+    <option value="--include-package=PySide6" />
+    <option value="--include-package=selenium" />
+    <option value="--include-package=undetected_chromedriver" />
+    <option value="--include-package=pyautogui" />
+    <option value="--include-package=keyboard" />
+    <option value="--include-package=setuptools" />
+    <option value="--include-package=_frozen_importlib" />
+    <option value="--include-package=_frozen_importlib_external" />
+    <option value="--include-package=importlib" />
+    <option value="--enable-plugin=pyside6" />
+    <option value="--enable-plugin=numpy" />
+    <option value="--enable-plugin=anti-bloat" />
+    <option value="--follow-imports" />
+    <option value="--assume-yes-for-downloads" />
+    <option value="C:\Users\danie\OneDrive\Desktop\vscode\python\Projects\AutoApp-main\AutoApp-main\Final-Product\main.py" />
+  </command_line>
+  <plugins>
+    <plugin name="anti-bloat" user_enabled="no" />
+    <plugin name="data-files" user_enabled="no" />
+    <plugin name="delvewheel" user_enabled="no" />
+    <plugin name="dll-files" user_enabled="no" />
+    <plugin name="eventlet" user_enabled="no" />
+    <plugin name="gevent" user_enabled="no" />
+    <plugin name="gi" user_enabled="no" />
+    <plugin name="glfw" user_enabled="no" />
+    <plugin name="implicit-imports" user_enabled="no" />
+    <plugin name="kivy" user_enabled="no" />
+    <plugin name="matplotlib" user_enabled="no" />
+    <plugin name="multiprocessing" user_enabled="no" />
+    <plugin name="options-nanny" user_enabled="no" />
+    <plugin name="pbr-compat" user_enabled="no" />
+    <plugin name="pkg-resources" user_enabled="no" />
+    <plugin name="playwright" user_enabled="no" />
+    <plugin name="pyside6" user_enabled="yes" />
+    <plugin name="pywebview" user_enabled="no" />
+    <plugin name="spacy" user_enabled="no" />
+    <plugin name="transformers" user_enabled="no" />
+  </plugins>
+  <distributions />
+  <python python_exe="${sys.prefix}\Scripts\python.exe" python_flavor="CPython Official" python_version="3.12.8" os_name="Windows" os_release="11" arch_name="x86_64" filesystem_encoding="utf-8">
+    <search_path>
+      <path value="${cwd}" />
+      <path value="${cwd}\AutoApp-main\Final-Product" />
+      <path value="${sys.real_prefix}\DLLs" />
+      <path value="${sys.real_prefix}\Lib" />
+      <path value="${sys.real_prefix}" />
+      <path value="${sys.prefix}" />
+      <path value="${sys.prefix}\Lib\site-packages" />
+    </search_path>
+  </python>
+  <output run_filename="C:\MACRO\main.dist\AutoApp.exe" />
+</nuitka-compilation-report>
