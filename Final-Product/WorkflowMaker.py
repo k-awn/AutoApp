@@ -1019,8 +1019,8 @@ class Ui_MainWindow2(object):
             """)
             self.LabelLayout.addWidget(self.deleteButtons[count], count, 3, 1, 1)
 
-            self.upButton[count] = QPushButton('Up')
-            self.downButton[count] = QPushButton('Down')
+            self.upButton[count] = QPushButton('▲')
+            self.downButton[count] = QPushButton('▼')
             self.upButton[count].setStyleSheet("""
                 QPushButton {
                     background-color: #292626;
@@ -1032,12 +1032,12 @@ class Ui_MainWindow2(object):
                     border-bottom-right-radius: 10px;
                     margin: 0px;
                     padding: 5px;
-                    max-width: 100px;
+                    max-width: 25px;
                     font: bold
                 }
                 QPushButton:hover {
                     background-color: #908c8c;
-                    color: red
+                    color: #fffff0
                                                     
                 }
                 QPushButton:pressed {
@@ -1055,12 +1055,12 @@ class Ui_MainWindow2(object):
                     border-bottom-right-radius: 10px;
                     margin: 0px;
                     padding: 5px;
-                    max-width: 100px;
+                    max-width: 25px;
                     font: bold
                 }
                 QPushButton:hover {
                     background-color: #908c8c;
-                    color: red
+                    color: #fffff0
                                                     
                 }
                 QPushButton:pressed {
